@@ -1,0 +1,3151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sight.w - Search the web freely with unblocked games and entertainment">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>sight.w</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-secondary: #12121a;
+      --fg: #ffffff;
+      --muted: #6b7280;
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.4);
+      --accent-dim: rgba(139, 92, 246, 0.15);
+      --glass: rgba(18, 18, 26, 0.8);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --card: rgba(20, 20, 30, 0.6);
+      --success: #10b981;
+      --danger: #ef4444;
+      --sidebar-width: 240px;
+      --blur-amount: blur(20px);
+      --blur-sidebar: blur(40px);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-secondary: #f1f5f9;
+      --fg: #0f172a;
+      --muted: #64748b;
+      --accent: #7c3aed;
+      --accent-glow: rgba(124, 58, 237, 0.3);
+      --accent-dim: rgba(124, 58, 237, 0.1);
+      --glass: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(0, 0, 0, 0.08);
+      --card: rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="ocean"] {
+      --bg: #0c1929;
+      --bg-secondary: #132238;
+      --fg: #e0f2fe;
+      --muted: #7dd3fc;
+      --accent: #06b6d4;
+      --accent-glow: rgba(6, 182, 212, 0.4);
+      --accent-dim: rgba(6, 182, 212, 0.15);
+      --glass: rgba(12, 25, 41, 0.85);
+      --glass-border: rgba(6, 182, 212, 0.15);
+      --card: rgba(19, 34, 56, 0.7);
+    }
+
+    [data-theme="forest"] {
+      --bg: #0a1410;
+      --bg-secondary: #0f1f18;
+      --fg: #dcfce7;
+      --muted: #86efac;
+      --accent: #22c55e;
+      --accent-glow: rgba(34, 197, 94, 0.4);
+      --accent-dim: rgba(34, 197, 94, 0.15);
+      --glass: rgba(10, 20, 16, 0.85);
+      --glass-border: rgba(34, 197, 94, 0.15);
+      --card: rgba(15, 31, 24, 0.7);
+    }
+
+    [data-theme="sunset"] {
+      --bg: #1a0a0f;
+      --bg-secondary: #2a1018;
+      --fg: #fce7f3;
+      --muted: #f9a8d4;
+      --accent: #f472b6;
+      --accent-glow: rgba(244, 114, 182, 0.4);
+      --accent-dim: rgba(244, 114, 182, 0.15);
+      --glass: rgba(26, 10, 15, 0.85);
+      --glass-border: rgba(244, 114, 182, 0.15);
+      --card: rgba(42, 16, 24, 0.7);
+    }
+
+    [data-theme="midnight"] {
+      --bg: #0d0d1a;
+      --bg-secondary: #141428;
+      --fg: #e8e8f0;
+      --muted: #8888aa;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.4);
+      --accent-dim: rgba(99, 102, 241, 0.15);
+      --glass: rgba(13, 13, 26, 0.85);
+      --glass-border: rgba(99, 102, 241, 0.15);
+      --card: rgba(20, 20, 40, 0.7);
+    }
+
+    [data-theme="cherry"] {
+      --bg: #1a0a14;
+      --bg-secondary: #281020;
+      --fg: #fce4ec;
+      --muted: #f48fb1;
+      --accent: #ec407a;
+      --accent-glow: rgba(236, 64, 122, 0.4);
+      --accent-dim: rgba(236, 64, 122, 0.15);
+      --glass: rgba(26, 10, 20, 0.85);
+      --glass-border: rgba(236, 64, 122, 0.15);
+      --card: rgba(40, 16, 32, 0.7);
+    }
+
+    [data-theme="ember"] {
+      --bg: #1a0f0a;
+      --bg-secondary: #281810;
+      --fg: #fff3e0;
+      --muted: #ffab91;
+      --accent: #ff5722;
+      --accent-glow: rgba(255, 87, 34, 0.4);
+      --accent-dim: rgba(255, 87, 34, 0.15);
+      --glass: rgba(26, 15, 10, 0.85);
+      --glass-border: rgba(255, 87, 34, 0.15);
+      --card: rgba(40, 24, 16, 0.7);
+    }
+
+    [data-blur="false"] {
+      --blur-amount: blur(0px);
+      --blur-sidebar: blur(0px);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loading-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 40px var(--accent-glow);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 40px var(--accent-glow); }
+      50% { transform: scale(1.05); box-shadow: 0 0 60px var(--accent-glow); }
+    }
+
+    .loading-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .loading-bar-container {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loading-bar {
+      height: 100%;
+      background: var(--accent);
+      width: 0;
+      animation: load 0.8s ease-out forwards;
+    }
+
+    @keyframes load {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+
+
+    /* Stats Overlay */
+    .stats-overlay {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 12px;
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .stats-overlay.visible {
+      display: flex;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-label { color: var(--muted); font-weight: 500; }
+    .stat-value { font-weight: 700; font-variant-numeric: tabular-nums; }
+    .stat-value.good { color: var(--success); }
+    .stat-value.warn { color: #f59e0b; }
+    .stat-value.bad { color: var(--danger); }
+
+    /* App Container */
+    .app {
+      display: flex;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--glass);
+      backdrop-filter: var(--blur-sidebar);
+      -webkit-backdrop-filter: var(--blur-sidebar);
+      border-radius: 0 32px 32px 0;
+      border: 1px solid var(--glass-border);
+      border-left: none;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 100;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 4px 0 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    .sidebar-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: 2px solid var(--glass-border);
+      border-radius: 8px;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      z-index: 101;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-close-btn:hover {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .sidebar-open-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      width: 36px;
+      height: 36px;
+      background: transparent;
+      border: 2px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      z-index: 99;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-open-btn.visible {
+      display: flex;
+    }
+
+    .sidebar-open-btn:hover {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .time-card {
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .time {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .date {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .nav-list {
+      list-style: none;
+      flex: 1;
+    }
+
+    .nav-item {
+      margin-bottom: 6px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+      text-decoration: none;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: var(--accent-dim);
+      color: var(--fg);
+    }
+
+    .nav-link i {
+      width: 20px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .sidebar-footer {
+      border-top: 1px solid var(--glass-border);
+      padding-top: 16px;
+      margin-top: 8px;
+    }
+
+    .footer-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .footer-link:hover {
+      background: var(--accent-dim);
+      color: var(--fg);
+    }
+
+    .footer-link i {
+      width: 18px;
+      font-size: 15px;
+    }
+
+    /* Main Content */
+    .main-wrapper {
+      flex: 1;
+      margin-left: var(--sidebar-width);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: relative;
+      transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .main-wrapper.expanded {
+      margin-left: 0;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    .main-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .main-title {
+      font-size: 72px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      margin-bottom: 12px;
+    }
+
+    .main-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .search-wrapper {
+      width: 100%;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    .search-box {
+      display: flex;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 6px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 8px 40px var(--accent-glow);
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 14px 20px;
+      font-size: 15px;
+      color: var(--fg);
+      font-family: inherit;
+      font-weight: 500;
+    }
+
+    .search-input::placeholder {
+      color: var(--muted);
+    }
+
+    .search-btn {
+      background: var(--accent);
+      border: none;
+      border-radius: 14px;
+      padding: 12px 24px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .search-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .search-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Info Boxes */
+    .info-box {
+      width: 100%;
+      max-width: 560px;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-box-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .info-box-header i {
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .info-box-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .info-box-content {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .info-box-content ul {
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+
+    .info-box-content li {
+      margin-bottom: 4px;
+    }
+
+    .info-box-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 18px;
+      background: var(--accent-dim);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .info-box-link:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Full Page View */
+    .fullpage-view {
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      display: none;
+      flex-direction: column;
+      z-index: 50;
+    }
+
+    .fullpage-view.active {
+      display: flex;
+    }
+
+    .fullpage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
+      border-bottom: 1px solid var(--glass-border);
+      min-height: 56px;
+    }
+
+    .fullpage-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .fullpage-title i {
+      color: var(--accent);
+    }
+
+    .fullpage-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .fullpage-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      background: var(--card);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .fullpage-btn:hover {
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .fullpage-btn.home-btn {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .fullpage-btn.home-btn:hover {
+      transform: scale(1.02);
+    }
+
+    .fullpage-btn.accent-btn {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .fullpage-btn.accent-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .fullpage-body {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .fullpage-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Games Menu */
+    .games-menu {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      gap: 24px;
+    }
+
+    .games-menu-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .games-option {
+      width: 100%;
+      max-width: 400px;
+      padding: 32px;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      border: 2px solid var(--glass-border);
+      border-radius: 20px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .games-option:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    }
+
+    .games-option i {
+      font-size: 40px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .games-option-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .games-option-desc {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* 2nd Games Grid */
+    .second-games {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .second-games-search {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .second-games-search input {
+      padding: 14px 20px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      border: 2px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--fg);
+      font-size: 16px;
+      text-align: center;
+      font-family: inherit;
+    }
+
+    .second-games-search input:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .second-games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .game-card {
+      text-align: center;
+      padding: 12px;
+      background: var(--glass);
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      contain: layout style;
+    }
+
+    .game-card:hover {
+      border-color: var(--accent);
+      transform: scale(0.98);
+    }
+
+    .game-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: var(--bg-secondary);
+    }
+
+    .game-card p {
+      font-size: 13px;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Game Player View */
+    .game-player-view {
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      display: none;
+      flex-direction: column;
+      z-index: 60;
+    }
+
+    .game-player-view.active {
+      display: flex;
+    }
+
+    .game-player-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
+      border-bottom: 1px solid var(--glass-border);
+      min-height: 56px;
+    }
+
+    .game-player-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .game-player-title i {
+      color: var(--accent);
+    }
+
+    .game-player-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .game-player-body {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .game-player-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .game-player-loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .game-player-loading i {
+      font-size: 48px;
+      color: var(--accent);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .game-player-loading span {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .game-player-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: var(--bg);
+    }
+
+    /* Eaglercraft Client Selector */
+    .eaglercraft-selector {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .eaglercraft-selector.active {
+      display: flex;
+    }
+
+    .eaglercraft-selector::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
+
+    .eaglercraft-selector-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .eaglercraft-selector-title {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .eaglercraft-selector-subtitle {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+    }
+
+    .client-select-container {
+      margin-bottom: 24px;
+    }
+
+    .client-select-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 12px;
+    }
+
+    .client-select {
+      width: 300px;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: #fff;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 20px;
+      font-family: inherit;
+      text-align: center;
+    }
+
+    .client-select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .client-select option {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .launch-btn {
+      padding: 14px 40px;
+      font-size: 16px;
+      font-weight: 600;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .launch-btn:hover {
+      opacity: 0.9;
+    }
+
+    .launch-btn:active {
+      transform: scale(0.98);
+    }
+
+    .eaglercraft-back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .eaglercraft-back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Partners Page */
+    .partners-page {
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      overflow-y: auto;
+      display: none;
+      z-index: 50;
+    }
+
+    .partners-page.active {
+      display: block;
+    }
+
+    .partners-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .partners-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      color: var(--fg);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 24px;
+      border: none;
+      font-family: inherit;
+    }
+
+    .partners-back:hover {
+      background: var(--accent-dim);
+    }
+
+    .partners-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .partners-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .partners-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      padding: 10px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--glass-border);
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 auto 20px;
+      font-weight: 500;
+    }
+
+    .partners-tag i {
+      color: var(--accent);
+    }
+
+    .partners-intro {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .partner-card {
+      background: var(--glass);
+      border-radius: 24px;
+      padding: 28px;
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      color: var(--fg);
+    }
+
+    .partner-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    }
+
+    .partner-logo-wrap {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      padding: 4px;
+      background: var(--accent);
+    }
+
+    .partner-logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-secondary);
+      border: 2px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .partner-logo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .partner-name {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .partner-trusted {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: var(--accent-dim);
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      border: 1px solid var(--accent);
+    }
+
+    .partner-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .partner-tags {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .partner-tag-item {
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--glass-border);
+    }
+
+    .partner-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: var(--card);
+      color: var(--fg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+
+    .partner-card:hover .partner-btn {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .partner-card.no-click {
+      cursor: default;
+    }
+
+    .partner-card.no-click:hover .partner-btn {
+      transform: none;
+      background: var(--card);
+      color: var(--muted);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--glass);
+      backdrop-filter: var(--blur-sidebar);
+      -webkit-backdrop-filter: var(--blur-sidebar);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      overflow: hidden;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.25s ease;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--glass-border);
+      position: sticky;
+      top: 0;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
+      z-index: 1;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-title i {
+      color: var(--accent);
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: none;
+      background: var(--card);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .modal-close:hover {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .modal-body {
+      padding: 22px;
+      overflow-y: auto;
+    }
+
+    .settings-modal .modal {
+      width: 340px;
+    }
+
+    .settings-section {
+      margin-bottom: 20px;
+    }
+
+    .settings-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .theme-btn {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      border: 2px solid var(--glass-border);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .theme-btn.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .theme-btn.active::after {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-dark { background: #0a0a0f; }
+    .theme-light { background: #f8fafc; }
+    .theme-ocean { background: #0c1929; }
+    .theme-forest { background: #0a1410; }
+    .theme-sunset { background: #1a0a0f; }
+    .theme-midnight { background: #0d0d1a; }
+    .theme-cherry { background: #1a0a14; }
+    .theme-ember { background: #1a0f0a; }
+
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .toggle-text {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .toggle-text small {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .toggle-switch {
+      width: 44px;
+      height: 26px;
+      background: var(--card);
+      border-radius: 13px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+      border: none;
+    }
+
+    .toggle-switch.on {
+      background: var(--accent);
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .toggle-switch.on::after {
+      transform: translateX(18px);
+    }
+
+    .legal-modal .modal {
+      width: 480px;
+      max-width: 92vw;
+    }
+
+    .legal-content {
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .legal-content h3 {
+      font-size: 14px;
+      margin: 16px 0 8px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .legal-content h3:first-child {
+      margin-top: 0;
+    }
+
+    .legal-content p {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .legal-content ul {
+      margin: 8px 0 14px 18px;
+      color: var(--muted);
+    }
+
+    .legal-content li {
+      margin-bottom: 6px;
+    }
+
+    .legal-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+      background: var(--card);
+      padding: 4px;
+      border-radius: 12px;
+    }
+
+    .legal-tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .legal-tab.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .credits-modal .modal {
+      width: 420px;
+      max-width: 92vw;
+    }
+
+    .credits-wrap {
+      width: 100%;
+    }
+
+    .credits-block {
+      border-radius: 14px;
+      border: 1px solid var(--glass-border);
+      background: var(--card);
+      padding: 16px 18px;
+      margin-bottom: 14px;
+    }
+
+    .credits-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .credits-item-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .credits-item-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .credits-item-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .credits-item-note a:hover {
+      text-decoration: underline;
+    }
+
+    .credits-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .credits-link-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+    }
+
+    .credits-link-label {
+      font-size: 12px;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .credits-link-btn {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .credits-link-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .credits-footer {
+      margin-top: 14px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .credits-tag {
+      border-radius: 999px;
+      border: 1px solid var(--glass-border);
+      padding: 4px 10px;
+      font-size: 10px;
+      color: var(--fg);
+    }
+
+    /* Keyboard Hint */
+    .kbd-hint {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      gap: 16px;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .kbd-hint kbd {
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-family: inherit;
+      font-size: 10px;
+      margin-right: 4px;
+      font-weight: 600;
+    }
+
+    /* Embed Modal */
+    .embed-modal .modal {
+      width: 500px;
+      max-width: 92vw;
+    }
+
+    .embed-code {
+      width: 100%;
+      height: 120px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--fg);
+      font-family: monospace;
+      font-size: 12px;
+      resize: none;
+    }
+
+    .embed-code:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .copy-btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .copy-btn:hover {
+      transform: scale(1.02);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main-wrapper {
+        margin-left: 0;
+      }
+
+      .main-title {
+        font-size: 48px;
+        letter-spacing: -2px;
+      }
+
+      .partners-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .search-wrapper {
+        max-width: 100%;
+      }
+
+      .main {
+        padding: 20px;
+      }
+
+      .kbd-hint {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        gap: 12px;
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-title {
+        font-size: 36px;
+      }
+
+      .theme-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+
+      .kbd-hint {
+        display: none;
+      }
+
+      .search-btn {
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--glass-border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <img class="loading-logo" src="https://image2url.com/r2/default/images/1772114193046-733bfa71-77a7-4fdc-bce4-d3e8ebe17a29.png" alt="Sight.w Logo">
+    <h1 class="loading-title">sight.w</h1>
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+    <p class="loading-text">Loading...</p>
+  </div>
+
+
+
+  <!-- Main App -->
+  <div class="app">
+    <!-- Sidebar -->
+    <!-- Sidebar Open Button (visible when sidebar is collapsed) -->
+    <button class="sidebar-open-btn" id="sidebarOpenBtn" aria-label="Open sidebar">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+      <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close sidebar">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      
+      <div class="logo">
+        <img src="https://image2url.com/r2/default/images/1772114193046-733bfa71-77a7-4fdc-bce4-d3e8ebe17a29.png" alt="Sight.w Logo">
+        <span class="logo-text">sight.w</span>
+      </div>
+
+      <div class="time-card">
+        <div class="time" id="time" aria-label="Current time">00:00</div>
+        <div class="date" id="date" aria-label="Current date">Monday, Jan 1</div>
+      </div>
+
+      <ul class="nav-list" role="menubar">
+        <li class="nav-item" role="none">
+          <a class="nav-link active" id="homeLink" role="menuitem">
+            <i class="fas fa-house" aria-hidden="true"></i> Home
+          </a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" id="gamesLink" role="menuitem">
+            <i class="fas fa-gamepad" aria-hidden="true"></i> Games
+          </a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" id="moviesLink" role="menuitem">
+            <i class="fas fa-clapperboard" aria-hidden="true"></i> Movies
+          </a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" id="partnersLink" role="menuitem">
+            <i class="fas fa-handshake" aria-hidden="true"></i> Partners
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="footer-link" id="settingsLink" role="button" aria-label="Open settings">
+          <i class="fas fa-gear" aria-hidden="true"></i> Settings
+        </div>
+        <div class="footer-link" id="creditsLink" role="button" aria-label="Open credits">
+          <i class="fas fa-heart" aria-hidden="true"></i> Credits
+        </div>
+        <div class="footer-link" id="legalLink" role="button" aria-label="Open legal info">
+          <i class="fas fa-scale-balanced" aria-hidden="true"></i> Legal
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper" id="mainWrapper">
+      <!-- Home Page -->
+      <main class="main" id="homePage" role="main" aria-label="Home page">
+        <header class="main-header">
+          <h1 class="main-title">sight.w</h1>
+          <p class="main-subtitle">Search the web freely</p>
+        </header>
+
+        <div class="search-wrapper">
+          <form class="search-box" id="searchForm" role="search">
+            <input class="search-input" id="searchInput" type="text" placeholder="Search the web..." aria-label="Search query" autocomplete="off">
+            <button class="search-btn" type="submit">Search</button>
+          </form>
+        </div>
+
+        <!-- Updates Box -->
+        <div class="info-box">
+          <div class="info-box-header">
+            <i class="fas fa-bell" aria-hidden="true"></i>
+            <h3 class="info-box-title">Updates</h3>
+          </div>
+          <div class="info-box-content">
+            <ul>
+              <li>Added 2nd games with 45+ games</li>
+              <li>Added Eaglercraft with multiple clients</li>
+              <li>Added partner form - become a partner!</li>
+            </ul>
+            <a href="https://github.com/NITRObrah" target="_blank" rel="noopener noreferrer" class="info-box-link">
+              <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Proxy Info Box -->
+        <div class="info-box">
+          <div class="info-box-header">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+            <h3 class="info-box-title">Proxy Status</h3>
+          </div>
+          <div class="info-box-content">
+            Proxy is kinda done, it's in beta though. Report any issues on our Discord!
+          </div>
+        </div>
+      </main>
+
+      <!-- Games Page -->
+      <div class="fullpage-view" id="gamesPage" role="main" aria-label="Games">
+        <!-- Games Menu -->
+        <div class="games-menu" id="gamesMenu">
+          <h2 class="games-menu-title">Choose Your Games</h2>
+          <div class="games-option" id="firstGamesBtn">
+            <i class="fas fa-gamepad" aria-hidden="true"></i>
+            <h3 class="games-option-title">1st Games</h3>
+            <p class="games-option-desc">557+ games with iframe loader</p>
+          </div>
+          <div class="games-option" id="secondGamesBtn">
+            <i class="fas fa-fire" aria-hidden="true"></i>
+            <h3 class="games-option-title">2nd Games</h3>
+            <p class="games-option-desc">Built-in games with better UI</p>
+          </div>
+          <div class="games-option" id="eaglercraftBtn">
+            <i class="fas fa-cube" aria-hidden="true"></i>
+            <h3 class="games-option-title">Eaglercraft</h3>
+            <p class="games-option-desc">Minecraft in your browser</p>
+          </div>
+        </div>
+
+        <!-- Games Header -->
+        <header class="fullpage-header" id="gamesHeader" style="display: none;">
+          <h2 class="fullpage-title">
+            <i class="fas fa-gamepad" aria-hidden="true"></i> Games
+          </h2>
+          <div class="fullpage-btns">
+            <button class="fullpage-btn" id="gamesBack" style="display: none;">
+              <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+            </button>
+            <button class="fullpage-btn" id="gamesReload" style="display: none;">
+              <i class="fas fa-rotate-right" aria-hidden="true"></i> Reload
+            </button>
+            <button class="fullpage-btn home-btn" id="gamesHome">
+              <i class="fas fa-house" aria-hidden="true"></i> Home
+            </button>
+          </div>
+        </header>
+
+        <!-- 1st Games Iframe Container -->
+        <div class="fullpage-body" id="gamesIframeContainer" style="display: none;">
+          <iframe class="fullpage-iframe" id="gamesIframe" title="Games content" allow="fullscreen *; gamepad *;" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock"></iframe>
+        </div>
+
+        <!-- Second Games Grid -->
+        <div class="second-games" id="secondGamesContainer" style="display: none;">
+          <div class="second-games-search">
+            <input type="text" id="gamesSearchInput" placeholder="Search games...">
+          </div>
+          <div class="second-games-grid" id="gamesGrid"></div>
+        </div>
+
+        <!-- Game Player View (for 2nd games) -->
+        <div class="game-player-view" id="gamePlayerView">
+          <header class="game-player-header">
+            <h2 class="game-player-title">
+              <i class="fas fa-gamepad" aria-hidden="true"></i> <span id="gamePlayerTitle">Game</span>
+            </h2>
+            <div class="game-player-btns">
+              <button class="fullpage-btn" id="gamePlayerReload">
+                <i class="fas fa-rotate-right" aria-hidden="true"></i> Reload
+              </button>
+              <button class="fullpage-btn accent-btn" id="gamePlayerEmbed">
+                <i class="fas fa-code" aria-hidden="true"></i> Embed
+              </button>
+              <button class="fullpage-btn" id="gamePlayerBack">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+              </button>
+            </div>
+          </header>
+          <div class="game-player-body">
+            <div class="game-player-loading" id="gamePlayerLoading">
+              <i class="fas fa-circle-notch"></i>
+              <span>Loading game...</span>
+            </div>
+            <iframe 
+              class="game-player-iframe" 
+              id="gamePlayerIframe" 
+              title="Game Player"
+              allow="fullscreen *; gamepad *; clipboard-write *;" 
+              allowfullscreen 
+              sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Eaglercraft Client Selector -->
+        <div class="eaglercraft-selector" id="eaglercraftSelector">
+          <button class="eaglercraft-back-btn" id="eaglercraftBack">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+          <div class="eaglercraft-selector-content">
+            <h2 class="eaglercraft-selector-title">Eaglercraft</h2>
+            <p class="eaglercraft-selector-subtitle">Select a client to launch</p>
+            <div class="client-select-container">
+              <label class="client-select-label" for="clientSelect">Select a Client</label>
+              <select class="client-select" id="clientSelect">
+                <option value="">-- Choose a client --</option>
+                <option value="archimedes">Archimedes Client</option>
+                <option value="astra">Astra Client</option>
+                <option value="nova">Nova Client</option>
+                <option value="tuff">Tuff Client</option>
+                <option value="precision">Precision Client</option>
+              </select>
+            </div>
+            <button class="launch-btn" id="launchClientBtn">Launch</button>
+          </div>
+        </div>
+
+        <!-- Eaglercraft Player View -->
+        <div class="game-player-view" id="eaglercraftPlayerView">
+          <header class="game-player-header">
+            <h2 class="game-player-title">
+              <i class="fas fa-cube" aria-hidden="true"></i> <span id="eaglercraftPlayerTitle">Eaglercraft</span>
+            </h2>
+            <div class="game-player-btns">
+              <button class="fullpage-btn" id="eaglercraftPlayerReload">
+                <i class="fas fa-rotate-right" aria-hidden="true"></i> Reload
+              </button>
+              <button class="fullpage-btn" id="eaglercraftPlayerBack">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+              </button>
+            </div>
+          </header>
+          <div class="game-player-body">
+            <div class="game-player-loading" id="eaglercraftPlayerLoading">
+              <i class="fas fa-circle-notch"></i>
+              <span>Loading Eaglercraft...</span>
+            </div>
+            <iframe 
+              class="game-player-iframe" 
+              id="eaglercraftPlayerIframe" 
+              title="Eaglercraft Player"
+              allow="fullscreen *; gamepad *; clipboard-write *; pointer-lock *;" 
+              allowfullscreen 
+              sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-downloads"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Movies Page -->
+      <div class="fullpage-view" id="moviesPage" role="main" aria-label="Movies">
+        <header class="fullpage-header">
+          <h2 class="fullpage-title">
+            <i class="fas fa-clapperboard" aria-hidden="true"></i> Movies
+          </h2>
+          <div class="fullpage-btns">
+            <button class="fullpage-btn" id="moviesReload">
+              <i class="fas fa-rotate-right" aria-hidden="true"></i> Reload
+            </button>
+            <button class="fullpage-btn home-btn" id="moviesHome">
+              <i class="fas fa-house" aria-hidden="true"></i> Home
+            </button>
+          </div>
+        </header>
+        <div class="fullpage-body">
+          <iframe 
+            class="fullpage-iframe" 
+            id="moviesIframe" 
+            title="Movies content"
+            allow="fullscreen *;" 
+            allowfullscreen 
+            sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Partners Page -->
+      <div class="partners-page" id="partnersPage" role="main" aria-label="Partners">
+        <div class="partners-content">
+          <button class="partners-back" id="partnersBack" aria-label="Back to home">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home
+          </button>
+
+          <div class="partners-header">
+            <h2 class="partners-title">Partners</h2>
+          </div>
+
+          <div style="text-align: center;">
+            <div class="partners-tag">
+              <i class="fas fa-handshake" aria-hidden="true"></i>
+              networks we actually use
+            </div>
+          </div>
+
+          <p class="partners-intro">
+            Stuff we tested ourselves. Click cards to jump to their sites (opens in new tab).
+          </p>
+
+          <div class="partners-grid" role="list">
+            <article class="partner-card" onclick="window.open('https://mathsight.fillout.com/sight', '_blank')">
+              <div class="partner-logo-wrap">
+                <div class="partner-logo-inner">
+                  <i class="fas fa-handshake" style="font-size: 32px; color: var(--accent);"></i>
+                </div>
+              </div>
+              <h3 class="partner-name">Become a Partner</h3>
+              <p class="partner-desc">Interested in partnering with us? Fill out the form to get started!</p>
+              <div class="partner-tags">
+                <span class="partner-tag-item">Partner</span>
+                <span class="partner-tag-item">Form</span>
+              </div>
+              <span class="partner-btn">Open Form</span>
+            </article>
+            <article class="partner-card no-click">
+              <div class="partner-logo-wrap">
+                <div class="partner-logo-inner">
+                  <i class="fas fa-question" style="font-size: 32px; color: var(--muted);"></i>
+                </div>
+              </div>
+              <h3 class="partner-name">Your Site Here?</h3>
+              <p class="partner-desc">Join our partner network! Use the form above to apply.</p>
+              <div class="partner-tags">
+                <span class="partner-tag-item">Partner</span>
+              </div>
+              <span class="partner-btn" style="cursor: default;">coming soon!</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Keyboard Shortcuts Hint -->
+  <div class="kbd-hint" aria-label="Keyboard shortcuts" role="complementary">
+    <span><kbd>G</kbd> Games</span>
+    <span><kbd>M</kbd> Movies</span>
+    <span><kbd>H</kbd> Home</span>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay settings-modal" id="settingsModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <header class="modal-header">
+        <h2 class="modal-title">
+          <i class="fas fa-gear" aria-hidden="true"></i> Settings
+        </h2>
+        <button class="modal-close" id="settingsClose" aria-label="Close settings">
+          <i class="fas fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="modal-body">
+        <div class="settings-section">
+          <p class="settings-label">Theme</p>
+          <div class="theme-grid">
+            <button class="theme-btn theme-dark" data-theme="dark" aria-label="Dark theme"></button>
+            <button class="theme-btn theme-light" data-theme="light" aria-label="Light theme"></button>
+            <button class="theme-btn theme-ocean" data-theme="ocean" aria-label="Ocean theme"></button>
+            <button class="theme-btn theme-forest" data-theme="forest" aria-label="Forest theme"></button>
+            <button class="theme-btn theme-sunset" data-theme="sunset" aria-label="Sunset theme"></button>
+            <button class="theme-btn theme-midnight" data-theme="midnight" aria-label="Midnight theme"></button>
+            <button class="theme-btn theme-cherry" data-theme="cherry" aria-label="Cherry theme"></button>
+            <button class="theme-btn theme-ember" data-theme="ember" aria-label="Ember theme"></button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <p class="settings-label">Performance</p>
+          <div class="toggle-row">
+            <span class="toggle-text">FPS Booster <small>Optimizes rendering</small></span>
+            <button class="toggle-switch on" id="toggleFpsBooster" aria-label="FPS Booster"></button>
+          </div>
+          <div class="toggle-row">
+            <span class="toggle-text">Show Stats <small>FPS, Ping, Battery</small></span>
+            <button class="toggle-switch" id="toggleStats" aria-label="Show stats overlay"></button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <p class="settings-label">Display</p>
+          <div class="toggle-row">
+            <span class="toggle-text">Blur Effects</span>
+            <button class="toggle-switch on" id="toggleBlur" aria-label="Blur effects"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credits Modal -->
+  <div class="modal-overlay credits-modal" id="creditsModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <header class="modal-header">
+        <h2 class="modal-title">
+          <i class="fas fa-heart" aria-hidden="true"></i> Credits
+        </h2>
+        <button class="modal-close" id="creditsClose" aria-label="Close credits">
+          <i class="fas fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="modal-body">
+        <div class="credits-wrap">
+          <div class="credits-block">
+            <div class="credits-label">2nd Games</div>
+            <div style="margin-bottom: 12px;">
+              <div class="credits-item-title">NativeLite</div>
+              <div class="credits-item-note">
+                Games from <a href="https://github.com/parcoillegacy/nativelite" target="_blank" rel="noopener noreferrer">parcoillegacy/nativelite</a>
+              </div>
+            </div>
+            <div>
+              <div class="credits-item-title">Holy Salmon</div>
+              <div class="credits-item-note">
+                Forked from <a href="https://github.com/ten8mystery/Holy-Salmon" target="_blank" rel="noopener noreferrer">ten8mystery/Holy-Salmon</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="credits-block">
+            <div class="credits-label">Credits</div>
+            <div style="margin-bottom: 12px;">
+              <div class="credits-item-title">Proxy</div>
+              <div class="credits-item-note">Credit to mathpunch Official ツ for proxy</div>
+            </div>
+            <div>
+              <div class="credits-item-title">UI & Animation</div>
+              <div class="credits-item-note">Credit to crxzy for UI and animation on Cloudflare</div>
+            </div>
+          </div>
+
+          <div class="credits-block">
+            <div class="credits-label">Links</div>
+            <div class="credits-links">
+              <div class="credits-link-item">
+                <span class="credits-link-label">NativeLite repo</span>
+                <a href="https://github.com/parcoillegacy/nativelite" target="_blank" rel="noopener noreferrer" class="credits-link-btn">view</a>
+              </div>
+              <div class="credits-link-item">
+                <span class="credits-link-label">Holy Salmon repo</span>
+                <a href="https://github.com/ten8mystery/Holy-Salmon" target="_blank" rel="noopener noreferrer" class="credits-link-btn">view</a>
+              </div>
+              <div class="credits-link-item">
+                <span class="credits-link-label">mathpunch site</span>
+                <a href="https://ixlmathlogin.netlify.app/" target="_blank" rel="noopener noreferrer" class="credits-link-btn">visit</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="credits-footer">
+            <span class="credits-tag">Made with ❤️</span>
+            <span>sight.w © 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal Modal -->
+  <div class="modal-overlay legal-modal" id="legalModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <header class="modal-header">
+        <h2 class="modal-title">
+          <i class="fas fa-scale-balanced" aria-hidden="true"></i> Legal
+        </h2>
+        <button class="modal-close" id="legalClose" aria-label="Close legal">
+          <i class="fas fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="modal-body">
+        <div class="legal-tabs">
+          <button class="legal-tab active" data-tab="tos">Terms of Service</button>
+          <button class="legal-tab" data-tab="privacy">Privacy Policy</button>
+        </div>
+        <div class="legal-content" id="tosContent">
+          <h3>1. Acceptance of Terms</h3>
+          <p>By accessing and using sight.w, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use this service.</p>
+          
+          <h3>2. Use of Service</h3>
+          <p>This service is provided for educational and personal use. Users are responsible for ensuring their use complies with all applicable laws and regulations in their jurisdiction.</p>
+          
+          <h3>3. Disclaimer</h3>
+          <p>sight.w is provided "as is" without warranties of any kind. We are not responsible for content accessed through this service or any damages arising from its use.</p>
+          
+          <h3>4. Third-Party Content</h3>
+          <p>This service may link to or display third-party content. We do not endorse or assume responsibility for any third-party content, including games, apps, or external websites.</p>
+        </div>
+        <div class="legal-content" id="privacyContent" style="display: none;">
+          <h3>1. Information Collected</h3>
+          <p>We collect minimal information necessary for the operation of this service. This may include browser type, device information, and usage patterns for analytical purposes.</p>
+          
+          <h3>2. Local Storage</h3>
+          <p>We use browser local storage to save your preferences such as theme selection and settings. This data remains on your device and is not transmitted to our servers.</p>
+          
+          <h3>3. Third-Party Services</h3>
+          <p>Content displayed through this service may be subject to the privacy policies of their respective providers. We encourage you to review their policies.</p>
+          
+          <h3>4. Cookies</h3>
+          <p>Some third-party services may use cookies. You can manage cookie settings through your browser preferences.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embed Modal -->
+  <div class="modal-overlay embed-modal" id="embedModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <header class="modal-header">
+        <h2 class="modal-title">
+          <i class="fas fa-code" aria-hidden="true"></i> Embed Code
+        </h2>
+        <button class="modal-close" id="embedClose" aria-label="Close embed">
+          <i class="fas fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="modal-body">
+        <textarea class="embed-code" id="embedCode" readonly aria-label="Embed code"></textarea>
+        <button class="copy-btn" id="copyEmbedBtn">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Overlay -->
+  <div class="stats-overlay" id="statsOverlay" aria-label="Performance statistics">
+    <div class="stat-row">
+      <span class="stat-label">FPS</span>
+      <span class="stat-value" id="fpsValue">60</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Ping</span>
+      <span class="stat-value" id="pingValue">--</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Battery</span>
+      <span class="stat-value" id="batteryValue">--</span>
+    </div>
+  </div>
+
+  <script>
+    // ==================== UTILITIES ====================
+    const $ = id => document.getElementById(id);
+    const $all = sel => document.querySelectorAll(sel);
+
+    // Simple store using localStorage
+    const store = {
+      get: key => { try { return localStorage.getItem(key); } catch(e) { return null; } },
+      set: (key, val) => { try { localStorage.setItem(key, val); } catch(e) {} }
+    };
+
+    // ==================== GAMES DATA ====================
+    const gamesData = [
+      { name: "1v1lol", image: "logo.png", url: "1v1lol" },
+      { name: "Basket Random", image: "basket-random.png", url: "basket-random" },
+      { name: "Basketball Stars", image: "basketball-stars.png", url: "basketball-stars" },
+      { name: "Bitlife", image: "bitlife.png", url: "bitlife" },
+      { name: "Brawlhalla", image: "brawlhalla.png", url: "brawlhalla" },
+      { name: "Build Now GG", image: "build-now-gg.png", url: "buildnowgg" },
+      { name: "Bullet Force", image: "bullet-force.png", url: "bullet-force" },
+      { name: "Cluster Rush", image: "cluster-rush.png", url: "cluster-rush" },
+      { name: "Cookie Clicker", image: "cookieclicker.png", url: "cookieclicker" },
+      { name: "Crossy Road", image: "crossy-road.png", url: "crossy-road" },
+      { name: "Deepest Sword", image: "deepest-sword.png", url: "deepest-sword" },
+      { name: "Dogeminer", image: "doge.png", url: "dogeminer" },
+      { name: "Drift Boss", image: "drift-boss.png", url: "drift-boss" },
+      { name: "Drift Hunters", image: "drift-hunters.png", url: "drift-hunters" },
+      { name: "Drive Mad", image: "drive-mad.png", url: "drive-mad" },
+      { name: "Eggy Car", image: "eggy-car.png", url: "eggy-car" },
+      { name: "Fall Boys", image: "fall-boys.png", url: "fall-boys" },
+      { name: "Friday Night Funkin", image: "fnf.png", url: "fnf" },
+      { name: "Geometry Dash", image: "gdash.png", url: "geometrydash" },
+      { name: "Geometry Dash Lite", image: "gdlite.png", url: "geometry-dash-lite" },
+      { name: "Geometry Dash Scratch", image: "gdscratch.png", url: "geometry-dash-scratch" },
+      { name: "G Switch 3", image: "g-switch-3.png", url: "g-switch-3" },
+      { name: "Hole.io", image: "hole-io.png", url: "hole-io" },
+      { name: "Idle Breakout", image: "idle-breakout.png", url: "idle-breakout" },
+      { name: "Impossible Quiz", image: "impossible-quiz.png", url: "impossible-quiz" },
+      { name: "Moto X3M", image: "moto-x3m.png", url: "moto-x3m" },
+      { name: "Moto X3M 2", image: "moto-x3m-2.png", url: "moto-x3m-2" },
+      { name: "Moto X3M 3", image: "moto-x3m-3.png", url: "moto-x3m-3" },
+      { name: "Moto X3M Winter", image: "moto-x3m-winter.png", url: "moto-x3m-winter" },
+      { name: "Mr Bullet", image: "mr-bullet.png", url: "mr-bullet" },
+      { name: "OvO", image: "ovo.png", url: "ovo" },
+      { name: "Paper.io 2", image: "paper-io-2.png", url: "paper-io-2" },
+      { name: "Pixel Gun Apocalypse", image: "pixel-gun.png", url: "pixel-gun-apocalypse" },
+      { name: "Retro Bowl", image: "retro-bowl.png", url: "retro-bowl" },
+      { name: "Rocket League", image: "rocket-league.png", url: "rocket-league" },
+      { name: "Rooftop Snipers", image: "rooftop-snipers.png", url: "rooftop-snipers" },
+      { name: "Run 3", image: "run3.png", url: "run3" },
+      { name: "Slope", image: "slope.png", url: "slope" },
+      { name: "Slope 2", image: "slope-2.png", url: "slope-2" },
+      { name: "Smash Karts", image: "smash-karts.png", url: "smash-karts" },
+      { name: "Snake", image: "snake.png", url: "snake" },
+      { name: "Snow Rider 3D", image: "snow-rider-3d.png", url: "snow-rider-3d" },
+      { name: "Stumble Guys", image: "stumble-guys.png", url: "stumble-guys" },
+      { name: "Subway Surfers", image: "subway-surfers.png", url: "subway-surfers" },
+      { name: "Soccer Random", image: "soccer-random.png", url: "soccer-random" },
+      { name: "Sugar Sugar", image: "sugar-sugar.png", url: "sugar-sugar" },
+      { name: "Superhot", image: "superhot.png", url: "superhot" },
+      { name: "Tanuki Sunset", image: "tanuki-sunset.png", url: "tanuki-sunset" },
+      { name: "Temple Run 2", image: "temple-run-2.png", url: "temple-run-2" },
+      { name: "Terraria", image: "terraria.png", url: "terraria" },
+      { name: "Tunnel Rush", image: "tunnel-rush.png", url: "tunnel-rush" },
+      { name: "Tunnel Rush 2", image: "tunnel-rush-2.png", url: "tunnel-rush-2" },
+      { name: "Vex 3", image: "vex3.png", url: "vex3" },
+      { name: "Vex 4", image: "vex4.png", url: "vex4" },
+      { name: "Vex 5", image: "vex.jpeg", url: "vex5" },
+      { name: "Vex 6", image: "assets/icon.png", url: "vex6" },
+      { name: "Vex 7", image: "assets/icon.png", url: "vex7" },
+      { name: "Wordle", image: "img/logo_512x512.png", url: "wordle" },
+      { name: "World's Hardest Game", image: "images/splash.jpg", url: "worlds-hardest-game" },
+      { name: "Zombs Royale", image: "zomb.png", url: "zombs-royale" },
+    ];
+
+    // Eaglercraft clients
+    const eaglercraftClients = {
+      archimedes: {
+        name: "Archimedes Client",
+        html: `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Archimedes Client</title></head><body><script>
+async function loadAndRun() {
+  const urls = [
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/arch/clarchimedesclient.html.part1",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/arch/clarchimedesclient.html.part2",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/arch/clarchimedesclient.html.part3"
+  ];
+  let fullHtml = "";
+  for (const u of urls) {
+    const res = await fetch(u);
+    fullHtml += await res.text();
+  }
+  document.open();
+  document.write(fullHtml);
+  document.close();
+}
+loadAndRun();<\/script></body></html>`
+      },
+      astra: {
+        name: "Astra Client",
+        html: `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Astra Client</title></head><body><script>
+async function loadAndRun() {
+  const urls = [
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/astra/clastraclient.html.part1",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/astra/clastraclient.html.part2",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/astra/clastraclient.html.part3",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/astra/clastraclient.html.part4"
+  ];
+  let fullHtml = "";
+  for (const u of urls) {
+    const res = await fetch(u);
+    fullHtml += await res.text();
+  }
+  document.open();
+  document.write(fullHtml);
+  document.close();
+}
+loadAndRun();<\/script></body></html>`
+      },
+      nova: {
+        name: "Nova Client",
+        html: `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Nova Client</title></head><body><script>
+async function loadAndRun() {
+  const urls = ["https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/clnovaclient.html"];
+  let fullHtml = "";
+  for (const u of urls) {
+    const res = await fetch(u);
+    fullHtml += await res.text();
+  }
+  document.open();
+  document.write(fullHtml);
+  document.close();
+}
+loadAndRun();<\/script></body></html>`
+      },
+      tuff: {
+        name: "Tuff Client",
+        html: `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Tuff Client</title></head><body><script>
+async function loadAndRun() {
+  const urls = [
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/tuff/clTuff_Client_Offline_WASM.html.part1",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/tuff/clTuff_Client_Offline_WASM.html.part2"
+  ];
+  let fullHtml = "";
+  for (const u of urls) {
+    const res = await fetch(u);
+    fullHtml += await res.text();
+  }
+  document.open();
+  document.write(fullHtml);
+  document.close();
+}
+loadAndRun();<\/script></body></html>`
+      },
+      precision: {
+        name: "Precision Client",
+        html: `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Precision Client</title></head><body><script>
+async function loadAndRun() {
+  const urls = [
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part1",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part2",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part3",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part4",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part5",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part6",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part7",
+    "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/precision/clprecisionclient.html.part8"
+  ];
+  let fullHtml = "";
+  for (const u of urls) {
+    const res = await fetch(u);
+    fullHtml += await res.text();
+  }
+  document.open();
+  document.write(fullHtml);
+  document.close();
+}
+loadAndRun();<\/script></body></html>`
+      }
+    };
+
+    const serverUrl1 = "https://gms.parcoil.com";
+    const gamesUrl = 'https://tight-breeze-9313.brayyy316.workers.dev/';
+    const moviesUrl = 'https://www.fmovies.gd/home';
+
+    // Current game URL for embed
+    let currentGameUrl = '';
+    let currentGameName = '';
+    let currentEaglercraftClient = '';
+
+    // ==================== LOADING SCREEN ====================
+    const loadingScreen = $('loadingScreen');
+    if (loadingScreen) {
+      setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+      }, 1200);
+    }
+
+    // ==================== TIME & DATE ====================
+    function updateTime() {
+      const now = new Date();
+      const timeEl = $('time');
+      const dateEl = $('date');
+      
+      if (timeEl) {
+        timeEl.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      }
+      
+      if (dateEl) {
+        dateEl.textContent = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+      }
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+
+    // ==================== SEARCH ====================
+    const searchForm = $('searchForm');
+    const searchInput = $('searchInput');
+
+    if (searchForm && searchInput) {
+      searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        if (query) {
+          const encoded = encodeURIComponent(query);
+          window.location.href = `/search?q=${encoded}`;
+        }
+      });
+    }
+
+
+
+    // ==================== FPS COUNTER ====================
+    let frameCount = 0;
+    let lastTime = performance.now();
+    let fps = 60;
+
+    function updateFPS() {
+      frameCount++;
+      const now = performance.now();
+      if (now - lastTime >= 1000) {
+        fps = Math.round(frameCount * 1000 / (now - lastTime));
+        frameCount = 0;
+        lastTime = now;
+        const fpsEl = $('fpsValue');
+        if (fpsEl) {
+          fpsEl.textContent = fps;
+          fpsEl.className = 'stat-value ' + (fps >= 50 ? 'good' : fps >= 30 ? 'warn' : 'bad');
+        }
+      }
+      requestAnimationFrame(updateFPS);
+    }
+    updateFPS();
+
+    // ==================== PING CHECK ====================
+    async function checkPing() {
+      const start = performance.now();
+      try {
+        await fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' });
+        const ping = Math.round(performance.now() - start);
+        const pingEl = $('pingValue');
+        if (pingEl) {
+          pingEl.textContent = ping + 'ms';
+          pingEl.className = 'stat-value ' + (ping < 100 ? 'good' : ping < 200 ? 'warn' : 'bad');
+        }
+      } catch (e) {
+        const pingEl = $('pingValue');
+        if (pingEl) pingEl.textContent = 'N/A';
+      }
+    }
+    checkPing();
+    setInterval(checkPing, 5000);
+
+    // ==================== BATTERY ====================
+    if ('getBattery' in navigator) {
+      navigator.getBattery().then(battery => {
+        function updateBattery() {
+          const level = Math.round(battery.level * 100);
+          const batteryEl = $('batteryValue');
+          if (batteryEl) {
+            batteryEl.textContent = level + '%';
+            batteryEl.className = 'stat-value ' + (level > 50 ? 'good' : level > 20 ? 'warn' : 'bad');
+          }
+        }
+        updateBattery();
+        battery.addEventListener('levelchange', updateBattery);
+      });
+    }
+
+    // ==================== SETTINGS TOGGLES ====================
+    // FPS Booster
+    const toggleFpsBooster = $('toggleFpsBooster');
+    if (toggleFpsBooster) {
+      toggleFpsBooster.classList.toggle('on', store.get('fpsBooster') !== 'false');
+      toggleFpsBooster.addEventListener('click', () => {
+        toggleFpsBooster.classList.toggle('on');
+        store.set('fpsBooster', toggleFpsBooster.classList.contains('on'));
+      });
+    }
+
+    // Stats
+    const toggleStats = $('toggleStats');
+    const statsOverlay = $('statsOverlay');
+    if (toggleStats && statsOverlay) {
+      const savedStats = store.get('showStats') === 'true';
+      toggleStats.classList.toggle('on', savedStats);
+      statsOverlay.classList.toggle('visible', savedStats);
+      toggleStats.addEventListener('click', () => {
+        toggleStats.classList.toggle('on');
+        statsOverlay.classList.toggle('visible', toggleStats.classList.contains('on'));
+        store.set('showStats', toggleStats.classList.contains('on'));
+      });
+    }
+
+    // Blur
+    const toggleBlur = $('toggleBlur');
+    if (toggleBlur) {
+      const savedBlur = store.get('blur') !== 'false';
+      toggleBlur.classList.toggle('on', savedBlur);
+      document.body.setAttribute('data-blur', savedBlur ? 'true' : 'false');
+      toggleBlur.addEventListener('click', () => {
+        toggleBlur.classList.toggle('on');
+        document.body.setAttribute('data-blur', toggleBlur.classList.contains('on') ? 'true' : 'false');
+        store.set('blur', toggleBlur.classList.contains('on'));
+      });
+    }
+
+    // ==================== PANIC BUTTON ====================
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '`' || e.key === '~') {
+        const popup = window.open('', '_blank', 'width=1,height=1');
+        if (popup) {
+          popup.document.title = '￰ ';
+          popup.document.body.style.cssText = 'margin:0;background:#0a0a0f;overflow:hidden';
+          const iframe = popup.document.createElement('iframe');
+          iframe.src = 'https://sightgoguardiannetwork.netlify.app/';
+          iframe.style.cssText = 'position:fixed;inset:0;border:none';
+          popup.document.body.appendChild(iframe);
+        }
+      }
+    });
+
+    // ==================== THEME MANAGEMENT ====================
+    let currentTheme = store.get('theme') || 'dark';
+    document.body.setAttribute('data-theme', currentTheme);
+
+    $all('.theme-btn').forEach((btn) => {
+      const isActive = btn.dataset.theme === currentTheme;
+      btn.classList.toggle('active', isActive);
+      btn.addEventListener('click', () => {
+        currentTheme = btn.dataset.theme;
+        document.body.setAttribute('data-theme', currentTheme);
+        store.set('theme', currentTheme);
+        $all('.theme-btn').forEach((otherBtn) => { otherBtn.classList.toggle('active', otherBtn === btn); });
+      });
+    });
+
+    // ==================== NAVIGATION ====================
+    let currentPage = 'home';
+    let currentGamesView = 'menu';
+
+    const pages = {
+      home: { element: $('homePage'), navLink: $('homeLink'), display: 'flex' },
+      games: { element: $('gamesPage'), navLink: $('gamesLink') },
+      movies: { element: $('moviesPage'), navLink: $('moviesLink'), iframe: $('moviesIframe') },
+      partners: { element: $('partnersPage'), navLink: $('partnersLink') }
+    };
+
+    function showPage(pageName) {
+      currentPage = pageName;
+
+      Object.entries(pages).forEach(([name, page]) => {
+        if (!page.element) return;
+        if (name === 'home') {
+          page.element.style.display = pageName === 'home' ? 'flex' : 'none';
+        } else if (page.element.classList.contains('fullpage-view') || page.element.classList.contains('partners-page')) {
+          page.element.classList.toggle('active', pageName === name);
+        }
+        if (page.navLink) page.navLink.classList.toggle('active', pageName === name);
+      });
+
+      const sidebar = $('sidebar');
+      if (sidebar && pageName === 'home') sidebar.classList.remove('collapsed');
+    }
+
+    function showGamesView(view) {
+      currentGamesView = view;
+      const gamesMenu = $('gamesMenu');
+      const gamesIframeContainer = $('gamesIframeContainer');
+      const secondGamesContainer = $('secondGamesContainer');
+      const gamePlayerView = $('gamePlayerView');
+      const eaglercraftSelector = $('eaglercraftSelector');
+      const eaglercraftPlayerView = $('eaglercraftPlayerView');
+      const gamesBack = $('gamesBack');
+      const gamesReload = $('gamesReload');
+      const gamesIframe = $('gamesIframe');
+
+      if (gamesMenu) gamesMenu.style.display = view === 'menu' ? 'flex' : 'none';
+      if (gamesIframeContainer) gamesIframeContainer.style.display = view === 'first' ? 'flex' : 'none';
+      if (secondGamesContainer) secondGamesContainer.style.display = view === 'second' ? 'flex' : 'none';
+      if (gamePlayerView) gamePlayerView.classList.remove('active');
+      if (eaglercraftSelector) eaglercraftSelector.classList.remove('active');
+      if (eaglercraftPlayerView) eaglercraftPlayerView.classList.remove('active');
+      if (gamesBack) gamesBack.style.display = view !== 'menu' ? 'flex' : 'none';
+      if (gamesReload) gamesReload.style.display = view === 'first' ? 'flex' : 'none';
+
+      if (view === 'first' && gamesIframe && !gamesIframe.src) {
+        gamesIframe.src = gamesUrl;
+      }
+
+      if (view === 'second' && !gamesRendered) {
+        renderGamesGrid();
+      }
+    }
+
+    // Game Player Functions
+    function openGamePlayer(gameName, gameUrl) {
+      currentGameUrl = `${serverUrl1}/${gameUrl}/`;
+      currentGameName = gameName;
+
+      const gamePlayerView = $('gamePlayerView');
+      const gamePlayerTitle = $('gamePlayerTitle');
+      const gamePlayerIframe = $('gamePlayerIframe');
+      const gamePlayerLoading = $('gamePlayerLoading');
+      const secondGamesContainer = $('secondGamesContainer');
+
+      if (gamePlayerTitle) gamePlayerTitle.textContent = gameName;
+      if (gamePlayerLoading) gamePlayerLoading.classList.remove('hidden');
+      if (gamePlayerIframe) {
+        gamePlayerIframe.src = currentGameUrl;
+        gamePlayerIframe.onload = function() {
+          if (gamePlayerLoading) gamePlayerLoading.classList.add('hidden');
+        };
+      }
+      if (gamePlayerView) gamePlayerView.classList.add('active');
+      if (secondGamesContainer) secondGamesContainer.style.display = 'none';
+
+      const gamesBack = $('gamesBack');
+      if (gamesBack) gamesBack.style.display = 'flex';
+    }
+
+    function closeGamePlayer() {
+      const gamePlayerView = $('gamePlayerView');
+      const gamePlayerIframe = $('gamePlayerIframe');
+      const secondGamesContainer = $('secondGamesContainer');
+
+      if (gamePlayerIframe) gamePlayerIframe.src = '';
+      if (gamePlayerView) gamePlayerView.classList.remove('active');
+      if (secondGamesContainer) secondGamesContainer.style.display = 'flex';
+    }
+
+    // Eaglercraft Functions
+    function openEaglercraftSelector() {
+      const eaglercraftSelector = $('eaglercraftSelector');
+      const gamesMenu = $('gamesMenu');
+      const gamesBack = $('gamesBack');
+
+      if (eaglercraftSelector) eaglercraftSelector.classList.add('active');
+      if (gamesMenu) gamesMenu.style.display = 'none';
+      if (gamesBack) gamesBack.style.display = 'flex';
+    }
+
+    function closeEaglercraftSelector() {
+      const eaglercraftSelector = $('eaglercraftSelector');
+      const eaglercraftPlayerView = $('eaglercraftPlayerView');
+      const gamesMenu = $('gamesMenu');
+      const gamesBack = $('gamesBack');
+
+      if (eaglercraftSelector) eaglercraftSelector.classList.remove('active');
+      if (eaglercraftPlayerView) {
+        eaglercraftPlayerView.classList.remove('active');
+        const iframe = $('eaglercraftPlayerIframe');
+        if (iframe) iframe.src = '';
+      }
+      if (gamesMenu) gamesMenu.style.display = 'flex';
+      if (gamesBack) gamesBack.style.display = 'none';
+    }
+
+    function launchEaglercraftClient(clientKey) {
+      const client = eaglercraftClients[clientKey];
+      if (!client) return;
+
+      currentEaglercraftClient = clientKey;
+
+      const eaglercraftSelector = $('eaglercraftSelector');
+      const eaglercraftPlayerView = $('eaglercraftPlayerView');
+      const eaglercraftPlayerTitle = $('eaglercraftPlayerTitle');
+      const eaglercraftPlayerIframe = $('eaglercraftPlayerIframe');
+      const eaglercraftPlayerLoading = $('eaglercraftPlayerLoading');
+
+      if (eaglercraftPlayerTitle) eaglercraftPlayerTitle.textContent = client.name;
+      if (eaglercraftPlayerLoading) eaglercraftPlayerLoading.classList.remove('hidden');
+      
+      if (eaglercraftPlayerIframe) {
+        const blob = new Blob([client.html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        eaglercraftPlayerIframe.src = url;
+        eaglercraftPlayerIframe.onload = function() {
+          if (eaglercraftPlayerLoading) eaglercraftPlayerLoading.classList.add('hidden');
+          URL.revokeObjectURL(url);
+        };
+      }
+
+      if (eaglercraftSelector) eaglercraftSelector.classList.remove('active');
+      if (eaglercraftPlayerView) eaglercraftPlayerView.classList.add('active');
+    }
+
+    // Sidebar Toggle
+    const sidebarCloseBtn = $('sidebarCloseBtn');
+    const sidebar = $('sidebar');
+    const mainWrapper = $('mainWrapper');
+
+    const sidebarOpenBtn = $('sidebarOpenBtn');
+
+    if (sidebarCloseBtn && sidebar) {
+      sidebarCloseBtn.addEventListener('click', () => {
+        sidebar.classList.add('collapsed');
+        if (mainWrapper) mainWrapper.classList.add('expanded');
+        if (sidebarOpenBtn) sidebarOpenBtn.classList.add('visible');
+      });
+    }
+
+    if (sidebarOpenBtn && sidebar) {
+      sidebarOpenBtn.addEventListener('click', () => {
+        sidebar.classList.remove('collapsed');
+        if (mainWrapper) mainWrapper.classList.remove('expanded');
+        sidebarOpenBtn.classList.remove('visible');
+      });
+    }
+
+    // Navigation Links
+    if (pages.home.navLink) pages.home.navLink.addEventListener('click', () => { showPage('home'); showGamesView('menu'); });
+    if (pages.games.navLink) pages.games.navLink.addEventListener('click', () => { showPage('games'); showGamesView('menu'); });
+    if (pages.movies.navLink) pages.movies.navLink.addEventListener('click', () => showPage('movies'));
+    if (pages.partners.navLink) pages.partners.navLink.addEventListener('click', () => showPage('partners'));
+
+    // Page-specific buttons
+    if ($('partnersBack')) $('partnersBack').addEventListener('click', () => showPage('home'));
+    if ($('gamesHome')) $('gamesHome').addEventListener('click', () => { showPage('home'); showGamesView('menu'); });
+    if ($('moviesHome')) $('moviesHome').addEventListener('click', () => showPage('home'));
+    if ($('gamesBack')) $('gamesBack').addEventListener('click', () => {
+      const gamePlayerView = $('gamePlayerView');
+      const eaglercraftSelector = $('eaglercraftSelector');
+      const eaglercraftPlayerView = $('eaglercraftPlayerView');
+      
+      if (gamePlayerView && gamePlayerView.classList.contains('active')) {
+        closeGamePlayer();
+      } else if (eaglercraftPlayerView && eaglercraftPlayerView.classList.contains('active')) {
+        closeEaglercraftSelector();
+      } else if (eaglercraftSelector && eaglercraftSelector.classList.contains('active')) {
+        closeEaglercraftSelector();
+      } else {
+        showGamesView('menu');
+      }
+    });
+
+    // Games selection
+    if ($('firstGamesBtn')) $('firstGamesBtn').addEventListener('click', () => showGamesView('first'));
+    if ($('secondGamesBtn')) $('secondGamesBtn').addEventListener('click', () => showGamesView('second'));
+    if ($('eaglercraftBtn')) $('eaglercraftBtn').addEventListener('click', () => openEaglercraftSelector());
+
+    // Eaglercraft client selector
+    if ($('eaglercraftBack')) {
+      $('eaglercraftBack').addEventListener('click', () => closeEaglercraftSelector());
+    }
+
+    if ($('launchClientBtn')) {
+      $('launchClientBtn').addEventListener('click', () => {
+        const select = $('clientSelect');
+        if (select && select.value) {
+          launchEaglercraftClient(select.value);
+        }
+      });
+    }
+
+    // Eaglercraft player buttons
+    if ($('eaglercraftPlayerReload')) {
+      $('eaglercraftPlayerReload').addEventListener('click', () => {
+        const iframe = $('eaglercraftPlayerIframe');
+        const loading = $('eaglercraftPlayerLoading');
+        if (iframe && currentEaglercraftClient) {
+          const client = eaglercraftClients[currentEaglercraftClient];
+          if (client) {
+            if (loading) loading.classList.remove('hidden');
+            const blob = new Blob([client.html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            iframe.src = url;
+            iframe.onload = function() {
+              if (loading) loading.classList.add('hidden');
+              URL.revokeObjectURL(url);
+            };
+          }
+        }
+      });
+    }
+
+    if ($('eaglercraftPlayerBack')) {
+      $('eaglercraftPlayerBack').addEventListener('click', () => {
+        closeEaglercraftSelector();
+      });
+    }
+
+    // Reload buttons
+    if ($('gamesReload')) {
+      $('gamesReload').addEventListener('click', () => {
+        const iframe = $('gamesIframe');
+        if (iframe) {
+          iframe.src = '';
+          setTimeout(() => { iframe.src = gamesUrl; }, 50);
+        }
+      });
+    }
+
+    if ($('moviesReload')) {
+      $('moviesReload').addEventListener('click', () => {
+        const iframe = $('moviesIframe');
+        if (iframe) {
+          iframe.src = '';
+          setTimeout(() => { iframe.src = moviesUrl; }, 50);
+        }
+      });
+    }
+
+    // Game Player buttons
+    if ($('gamePlayerReload')) {
+      $('gamePlayerReload').addEventListener('click', () => {
+        const iframe = $('gamePlayerIframe');
+        const loading = $('gamePlayerLoading');
+        if (iframe && currentGameUrl) {
+          if (loading) loading.classList.remove('hidden');
+          iframe.src = '';
+          setTimeout(() => { 
+            iframe.src = currentGameUrl;
+            iframe.onload = function() {
+              if (loading) loading.classList.add('hidden');
+            };
+          }, 50);
+        }
+      });
+    }
+
+    if ($('gamePlayerEmbed')) {
+      $('gamePlayerEmbed').addEventListener('click', () => {
+        const embedCode = $('embedCode');
+        if (embedCode && currentGameUrl) {
+          embedCode.value = `<iframe src="${currentGameUrl}" width="800" height="600" style="border:none;" allowfullscreen></iframe>`;
+          openModal('embedModal');
+        }
+      });
+    }
+
+    if ($('gamePlayerBack')) {
+      $('gamePlayerBack').addEventListener('click', () => {
+        closeGamePlayer();
+      });
+    }
+
+    // Copy embed code
+    if ($('copyEmbedBtn')) {
+      $('copyEmbedBtn').addEventListener('click', () => {
+        const embedCode = $('embedCode');
+        if (embedCode) {
+          embedCode.select();
+          document.execCommand('copy');
+          const btn = $('copyEmbedBtn');
+          if (btn) {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+          }
+        }
+      });
+    }
+
+    // Load movies iframe when page is shown
+    if (pages.movies.navLink) {
+      pages.movies.navLink.addEventListener('click', () => {
+        const iframe = $('moviesIframe');
+        if (iframe && !iframe.src) iframe.src = moviesUrl;
+      });
+    }
+
+    // ==================== 2ND GAMES GRID ====================
+    let gamesRendered = false;
+
+    function renderGamesGrid(filter = '') {
+      const grid = $('gamesGrid');
+      if (!grid) return;
+      
+      const filteredGames = filter 
+        ? gamesData.filter(g => g.name.toLowerCase().includes(filter.toLowerCase()))
+        : gamesData;
+      
+      const fragment = document.createDocumentFragment();
+      
+      filteredGames.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.onclick = () => openGamePlayer(game.name, game.url);
+        
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.src = `${serverUrl1}/${game.url}/${game.image}`;
+        img.alt = game.name;
+        img.onerror = function() { this.src = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text fill=%22%23666%22 x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22>No Image</text></svg>'; };
+        
+        const p = document.createElement('p');
+        p.textContent = game.name;
+        
+        card.appendChild(img);
+        card.appendChild(p);
+        fragment.appendChild(card);
+      });
+      
+      grid.innerHTML = '';
+      grid.appendChild(fragment);
+      gamesRendered = true;
+    }
+
+    // Games search
+    const gamesSearchInput = $('gamesSearchInput');
+    if (gamesSearchInput) {
+      gamesSearchInput.addEventListener('input', (e) => renderGamesGrid(e.target.value));
+    }
+
+    // ==================== MODAL MANAGEMENT ====================
+    function openModal(modalId) {
+      const modal = $(modalId);
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      const modal = $(modalId);
+      if (modal) modal.classList.remove('active');
+    }
+
+    // Settings Modal
+    if ($('settingsLink')) $('settingsLink').addEventListener('click', () => openModal('settingsModal'));
+    if ($('settingsClose')) $('settingsClose').addEventListener('click', () => closeModal('settingsModal'));
+    if ($('settingsModal')) $('settingsModal').addEventListener('click', (e) => { if (e.target === $('settingsModal')) closeModal('settingsModal'); });
+
+    // Credits Modal
+    if ($('creditsLink')) $('creditsLink').addEventListener('click', () => openModal('creditsModal'));
+    if ($('creditsClose')) $('creditsClose').addEventListener('click', () => closeModal('creditsModal'));
+    if ($('creditsModal')) $('creditsModal').addEventListener('click', (e) => { if (e.target === $('creditsModal')) closeModal('creditsModal'); });
+
+    // Legal Modal
+    if ($('legalLink')) $('legalLink').addEventListener('click', () => openModal('legalModal'));
+    if ($('legalClose')) $('legalClose').addEventListener('click', () => closeModal('legalModal'));
+    if ($('legalModal')) $('legalModal').addEventListener('click', (e) => { if (e.target === $('legalModal')) closeModal('legalModal'); });
+
+    // Embed Modal
+    if ($('embedClose')) $('embedClose').addEventListener('click', () => closeModal('embedModal'));
+    if ($('embedModal')) $('embedModal').addEventListener('click', (e) => { if (e.target === $('embedModal')) closeModal('embedModal'); });
+
+    // Legal Tabs
+    $all('.legal-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        $all('.legal-tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const tabName = tab.dataset.tab;
+        if ($('tosContent')) $('tosContent').style.display = tabName === 'tos' ? 'block' : 'none';
+        if ($('privacyContent')) $('privacyContent').style.display = tabName === 'privacy' ? 'block' : 'none';
+      });
+    });
+
+    // ==================== KEYBOARD SHORTCUTS ====================
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'Escape') {
+        if ($('settingsModal') && $('settingsModal').classList.contains('active')) closeModal('settingsModal');
+        else if ($('creditsModal') && $('creditsModal').classList.contains('active')) closeModal('creditsModal');
+        else if ($('legalModal') && $('legalModal').classList.contains('active')) closeModal('legalModal');
+        else if ($('embedModal') && $('embedModal').classList.contains('active')) closeModal('embedModal');
+        else if ($('gamePlayerView') && $('gamePlayerView').classList.contains('active')) closeGamePlayer();
+        else if ($('eaglercraftPlayerView') && $('eaglercraftPlayerView').classList.contains('active')) closeEaglercraftSelector();
+        else if ($('eaglercraftSelector') && $('eaglercraftSelector').classList.contains('active')) closeEaglercraftSelector();
+        else if (currentPage !== 'home') { showPage('home'); showGamesView('menu'); }
+        return;
+      }
+      const key = e.key.toLowerCase();
+      switch (key) {
+        case 'g': showPage('games'); showGamesView('menu'); break;
+        case 'm': showPage('movies'); break;
+        case 'p': showPage('partners'); break;
+        case 'h': showPage('home'); showGamesView('menu'); break;
+      }
+    });
+  </script>
+</body>
+</html>
