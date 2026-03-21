@@ -90,18 +90,6 @@
       --card: rgba(20, 20, 20, 0.9);
     }
 
-    [data-theme="mono"] {
-      --bg: #1a1a1a;
-      --bg-secondary: #242424;
-      --fg: #e5e5e5;
-      --muted: #808080;
-      --accent: #ffffff;
-      --accent-dim: rgba(255, 255, 255, 0.08);
-      --glass: rgba(26, 26, 26, 0.9);
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --card: rgba(40, 40, 40, 0.8);
-    }
-
     [data-theme="sunset"] {
       --bg: #1a0a0f;
       --bg-secondary: #2a1018;
@@ -1146,7 +1134,6 @@
     .theme-forest { background: #0a1410; }
     .theme-earthy { background: #f5f0e6; color: #3d3929; }
     .theme-neon { background: #000; }
-    .theme-mono { background: #1a1a1a; }
     .theme-sunset { background: #1a0a0f; }
 
     .toggle-row {
@@ -1743,7 +1730,6 @@
               <button class="theme-btn theme-forest" data-theme="forest">Forest</button>
               <button class="theme-btn theme-earthy" data-theme="earthy">Earthy</button>
               <button class="theme-btn theme-neon" data-theme="neon">Neon</button>
-              <button class="theme-btn theme-mono" data-theme="mono">Mono</button>
               <button class="theme-btn theme-sunset" data-theme="sunset">Sunset</button>
             </div>
           </div>
@@ -1785,10 +1771,8 @@
             <h3 class="settings-section-title"><i class="fas fa-mask"></i> Tab Cloak</h3>
             <div class="cloak-grid">
               <button class="cloak-btn active" data-cloak="default"><i class="fas fa-eye"></i>sight.w</button>
-              <button class="cloak-btn" data-cloak="clever"><img src="https://clever.com/favicon.ico" alt="">Clever</button>
               <button class="cloak-btn" data-cloak="canvas"><img src="https://canvas.instructure.com/favicon.ico" alt="">Canvas</button>
               <button class="cloak-btn" data-cloak="google"><img src="https://www.google.com/favicon.ico" alt="">Google</button>
-              <button class="cloak-btn" data-cloak="classroom"><img src="https://classroom.google.com/favicon.ico" alt="">Classroom</button>
               <button class="cloak-btn" data-cloak="drive"><img src="https://drive.google.com/favicon.ico" alt="">Drive</button>
             </div>
           </div>
@@ -2190,10 +2174,8 @@
     // Cloak config
     const cloakConfig = {
       default: { title: 'sight.w', favicon: 'https://image2url.com/r2/default/images/1772114193046-733bfa71-77a7-4fdc-bce4-d3e8ebe17a29.png' },
-      clever: { title: 'Clever | Portal', favicon: 'https://clever.com/favicon.ico' },
       canvas: { title: 'Canvas LMS', favicon: 'https://canvas.instructure.com/favicon.ico' },
       google: { title: 'Google', favicon: 'https://www.google.com/favicon.ico' },
-      classroom: { title: 'Google Classroom', favicon: 'https://classroom.google.com/favicon.ico' },
       drive: { title: 'Google Drive', favicon: 'https://drive.google.com/favicon.ico' }
     };
 
