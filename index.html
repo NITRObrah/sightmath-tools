@@ -868,21 +868,36 @@
       flex: 1;
       overflow-y: auto;
       padding: 24px;
+      padding-top: 80px;
     }
 
     .second-games-search {
       display: flex;
       justify-content: center;
       margin-bottom: 24px;
+      position: fixed;
+      top: 0;
+      left: var(--sidebar-width);
+      right: 0;
+      padding: 16px 24px;
+      background: var(--bg);
+      z-index: 50;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .main-wrapper.expanded .second-games-search {
+      left: 0;
     }
 
     .second-games-search input {
       padding: 14px 20px;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       border-radius: 12px;
       border: 2px solid var(--glass-border);
       background: var(--glass);
+      backdrop-filter: var(--blur-amount);
+      -webkit-backdrop-filter: var(--blur-amount);
       color: var(--fg);
       font-size: 16px;
       text-align: center;
@@ -892,6 +907,7 @@
     .second-games-search input:focus {
       border-color: var(--accent);
       outline: none;
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .second-games-grid {
@@ -2044,6 +2060,13 @@
         <span class="logo-text">sight.w</span>
       </div>
 
+      <!-- DMCA Badge at top -->
+      <div style="text-align: center; margin-bottom: 16px;">
+        <a href="//www.dmca.com/Protection/Status.aspx?ID=d3d96f76-21c0-4885-9e98-30170b4bc6cf" title="DMCA.com Protection Status" class="dmca-badge" target="_blank" rel="noopener noreferrer">
+          <img src="https://images.dmca.com/Badges/dmca-badge-w150-2x1-04.png?ID=d3d96f76-21c0-4885-9e98-30170b4bc6cf" alt="DMCA.com Protection Status" style="border-radius: 4px; width: 100px;" />
+        </a>
+      </div>
+
       <div class="time-card">
         <div class="time" id="time" aria-label="Current time">00:00</div>
         <div class="date" id="date" aria-label="Current date">Monday, Jan 1</div>
@@ -2128,13 +2151,6 @@
           <div class="info-box-content">
             <p>proxy works mostly, still fixing stuff. dm me if it breaks</p>
           </div>
-        </div>
-
-        <!-- DMCA Badge -->
-        <div style="text-align: center; margin-top: 20px;">
-          <a href="//www.dmca.com/Protection/Status.aspx?ID=d3d96f76-21c0-4885-9e98-30170b4bc6cf" title="DMCA.com Protection Status" class="dmca-badge" target="_blank" rel="noopener noreferrer">
-            <img src="https://images.dmca.com/Badges/dmca-badge-w150-2x1-04.png?ID=d3d96f76-21c0-4885-9e98-30170b4bc6cf" alt="DMCA.com Protection Status" style="border-radius: 4px;" />
-          </a>
         </div>
       </main>
 
