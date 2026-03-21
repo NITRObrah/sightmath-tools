@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sight.w - Search the web freely with unblocked games and entertainment">
+  <meta name="description" content="sight.w - ur spot for stuff">
   <meta name="theme-color" content="#0a0a0f">
   <title>sight.w</title>
+  <link rel="icon" type="image/png" href="https://image2url.com/r2/default/images/1772114193046-733bfa71-77a7-4fdc-bce4-d3e8ebe17a29.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -215,6 +216,32 @@
       font-size: 13px;
       color: var(--muted);
       opacity: 0.6;
+    }
+
+    /* main title */
+    .main-title {
+      font-size: 72px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      margin-bottom: 12px;
+    }
+
+    /* dmca badge */
+    .dmca-badge {
+      display: inline-block;
+      transition: all 0.3s ease;
+      outline: 3px solid transparent;
+      border-radius: 4px;
+      padding: 2px;
+    }
+
+    .dmca-badge:hover {
+      outline: 3px solid #166534;
+      box-shadow: 0 0 15px rgba(22, 101, 52, 0.5);
+    }
+
+    .dmca-badge img {
+      border-radius: 4px;
     }
 
 
@@ -482,13 +509,6 @@
       margin-bottom: 48px;
     }
 
-    .main-title {
-      font-size: 72px;
-      font-weight: 900;
-      letter-spacing: -4px;
-      margin-bottom: 12px;
-    }
-
     .main-subtitle {
       font-size: 16px;
       color: var(--muted);
@@ -729,49 +749,118 @@
       align-items: center;
       justify-content: center;
       padding: 40px;
-      gap: 24px;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Space background for games menu */
+    .games-menu::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 160px 120px, #fff, transparent),
+        radial-gradient(1px 1px at 200px 50px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 220px 150px, #fff, transparent),
+        radial-gradient(1px 1px at 270px 90px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 300px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 350px 140px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 400px 60px, #fff, transparent),
+        radial-gradient(1px 1px at 450px 180px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 500px 100px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 100px 200px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 180px 250px, #fff, transparent),
+        radial-gradient(1px 1px at 250px 220px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 320px 280px, #fff, transparent),
+        radial-gradient(1px 1px at 380px 240px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 450px 260px, #fff, transparent),
+        radial-gradient(1px 1px at 520px 300px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 580px 200px, #fff, transparent),
+        radial-gradient(1px 1px at 620px 280px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 680px 240px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 750px 180px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 800px 300px, #fff, transparent),
+        radial-gradient(1px 1px at 50px 350px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 120px 400px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 200px 380px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 280px 420px, #fff, transparent),
+        radial-gradient(1px 1px at 350px 360px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 420px 400px, #fff, transparent),
+        radial-gradient(1px 1px at 500px 450px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 600px 380px, #fff, transparent),
+        radial-gradient(1px 1px at 700px 420px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 780px 350px, #fff, transparent);
+      background-color: #0a0a12;
+      background-repeat: repeat;
+      background-size: 800px 500px;
+      z-index: 0;
     }
 
     .games-menu-title {
       font-size: 28px;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .games-option {
       width: 100%;
       max-width: 400px;
-      padding: 32px;
-      background: var(--glass);
+      padding: 28px;
+      background: rgba(15, 15, 25, 0.85);
       backdrop-filter: var(--blur-amount);
-      border: 2px solid var(--glass-border);
+      border: 2px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
       cursor: pointer;
       text-align: center;
       transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .games-option:hover {
       border-color: var(--accent);
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 16px 48px rgba(139, 92, 246, 0.2), 0 0 30px rgba(139, 92, 246, 0.1);
     }
 
     .games-option i {
-      font-size: 40px;
-      margin-bottom: 16px;
+      font-size: 36px;
+      margin-bottom: 12px;
       color: var(--accent);
     }
 
     .games-option-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .games-option-desc {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
+    }
+
+    /* Side by side row for games */
+    .games-row {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      max-width: 840px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .games-row .games-option {
+      flex: 1;
+      max-width: none;
     }
 
     /* 2nd Games Grid */
@@ -935,6 +1024,44 @@
       border: none;
       display: block;
       background: var(--bg);
+    }
+
+    /* Pointer lock indicator */
+    .pointer-lock-hint {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+    }
+
+    .pointer-lock-hint.visible {
+      opacity: 1;
+    }
+
+    /* FPS Boost mode styles */
+    .fps-boost-mode * {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .fps-boost-mode .glass,
+    .fps-boost-mode [style*="backdrop-filter"] {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .fps-boost-mode .loading-screen,
+    .fps-boost-mode .stats-overlay {
+      display: none !important;
     }
 
     /* Eaglercraft Client Selector */
@@ -1488,6 +1615,80 @@
       transform: translateX(18px);
     }
 
+    /* Tab Cloak Options */
+    .cloak-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .cloak-btn {
+      padding: 12px 8px;
+      border-radius: 10px;
+      border: 2px solid var(--glass-border);
+      background: var(--card);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .cloak-btn:hover {
+      border-color: var(--accent);
+      color: var(--fg);
+    }
+
+    .cloak-btn.active {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .cloak-btn img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+    }
+
+    .cloak-btn i {
+      font-size: 24px;
+    }
+
+    .stealth-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .stealth-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 2px solid var(--success);
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .stealth-btn:hover {
+      background: var(--success);
+      color: #fff;
+    }
+
     .legal-modal .modal {
       width: 480px;
       max-width: 92vw;
@@ -1820,7 +2021,7 @@
     <div class="loading-bar-container">
       <div class="loading-bar"></div>
     </div>
-    <p class="loading-text">Loading...</p>
+    <p class="loading-text">loading...</p>
   </div>
 
 
@@ -1856,7 +2057,7 @@
         </li>
         <li class="nav-item" role="none">
           <a class="nav-link" id="gamesLink" role="menuitem">
-            <i class="fas fa-gamepad" aria-hidden="true"></i> Games
+            <i class="fas fa-gamepad" aria-hidden="true"></i> Activities
           </a>
         </li>
         <li class="nav-item" role="none">
@@ -1890,72 +2091,80 @@
       <main class="main" id="homePage" role="main" aria-label="Home page">
         <header class="main-header">
           <h1 class="main-title">sight.w</h1>
-          <p class="main-subtitle">Search the web freely</p>
+          <p class="main-subtitle">search stuff</p>
         </header>
 
         <div class="search-wrapper">
           <form class="search-box" id="searchForm" role="search">
-            <input class="search-input" id="searchInput" type="text" placeholder="Search the web..." aria-label="Search query" autocomplete="off">
-            <button class="search-btn" type="submit">Search</button>
+            <input class="search-input" id="searchInput" type="text" placeholder="search..." autocomplete="off">
+            <button class="search-btn" type="submit">go</button>
           </form>
         </div>
 
         <!-- Updates Box -->
         <div class="info-box">
           <div class="info-box-header">
-            <i class="fas fa-bell" aria-hidden="true"></i>
-            <h3 class="info-box-title">Updates</h3>
+            <i class="fas fa-fire" aria-hidden="true"></i>
+            <h3 class="info-box-title">new stuff</h3>
           </div>
           <div class="info-box-content">
             <ul>
-              <li>Added 2nd games with 45+ games</li>
-              <li>Added Eaglercraft with multiple clients</li>
-              <li>Added partner form - become a partner!</li>
+              <li>Tab cloak - look like u doing work</li>
+              <li>about:blank button - bypass filters</li>
+              <li>press P twice to escape</li>
             </ul>
             <a href="https://github.com/NITRObrah" target="_blank" rel="noopener noreferrer" class="info-box-link">
-              <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
+              <i class="fab fa-github" aria-hidden="true"></i> github
             </a>
           </div>
         </div>
 
-        <!-- Proxy Info Box -->
+        <!-- Status Box -->
         <div class="info-box">
           <div class="info-box-header">
-            <i class="fas fa-info-circle" aria-hidden="true"></i>
-            <h3 class="info-box-title">Proxy Status</h3>
+            <i class="fas fa-signal" aria-hidden="true"></i>
+            <h3 class="info-box-title">status</h3>
           </div>
           <div class="info-box-content">
-            Proxy is kinda done, it's in beta though. Report any issues on our Discord!
+            <p>proxy works mostly, still fixing stuff. dm me if it breaks</p>
           </div>
+        </div>
+
+        <!-- DMCA Badge -->
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="//www.dmca.com/Protection/Status.aspx?ID=d3d96f76-21c0-4885-9e98-30170b4bc6cf" title="DMCA.com Protection Status" class="dmca-badge" target="_blank" rel="noopener noreferrer">
+            <img src="https://images.dmca.com/Badges/dmca-badge-w150-2x1-04.png?ID=d3d96f76-21c0-4885-9e98-30170b4bc6cf" alt="DMCA.com Protection Status" style="border-radius: 4px;" />
+          </a>
         </div>
       </main>
 
-      <!-- Games Page -->
-      <div class="fullpage-view" id="gamesPage" role="main" aria-label="Games">
-        <!-- Games Menu -->
+      <!-- Activities Page -->
+      <div class="fullpage-view" id="gamesPage" role="main" aria-label="Activities">
+        <!-- Activities Menu -->
         <div class="games-menu" id="gamesMenu">
-          <h2 class="games-menu-title">Choose Your Games</h2>
           <div class="games-option" id="firstGamesBtn">
             <i class="fas fa-gamepad" aria-hidden="true"></i>
             <h3 class="games-option-title">1st Games</h3>
-            <p class="games-option-desc">557+ games with iframe loader</p>
+            <p class="games-option-desc">500+ games</p>
           </div>
-          <div class="games-option" id="secondGamesBtn">
-            <i class="fas fa-fire" aria-hidden="true"></i>
-            <h3 class="games-option-title">2nd Games</h3>
-            <p class="games-option-desc">Built-in games with better UI</p>
-          </div>
-          <div class="games-option" id="eaglercraftBtn">
-            <i class="fas fa-cube" aria-hidden="true"></i>
-            <h3 class="games-option-title">Eaglercraft</h3>
-            <p class="games-option-desc">Minecraft in your browser</p>
+          <div class="games-row">
+            <div class="games-option" id="secondGamesBtn">
+              <i class="fas fa-fire" aria-hidden="true"></i>
+              <h3 class="games-option-title">2nd Games</h3>
+              <p class="games-option-desc">iconic games</p>
+            </div>
+            <div class="games-option" id="eaglercraftBtn">
+              <i class="fas fa-cube" aria-hidden="true"></i>
+              <h3 class="games-option-title">Eaglercraft</h3>
+              <p class="games-option-desc">mc in browser</p>
+            </div>
           </div>
         </div>
 
-        <!-- Games Header -->
+        <!-- Activities Header -->
         <header class="fullpage-header" id="gamesHeader" style="display: none;">
           <h2 class="fullpage-title">
-            <i class="fas fa-gamepad" aria-hidden="true"></i> Games
+            <i class="fas fa-gamepad" aria-hidden="true"></i> Activities
           </h2>
           <div class="fullpage-btns">
             <button class="fullpage-btn" id="gamesBack" style="display: none;">
@@ -1983,11 +2192,11 @@
           <div class="second-games-grid" id="gamesGrid"></div>
         </div>
 
-        <!-- Game Player View (for 2nd games) -->
+        <!-- Game Player View (for 2nd activities) -->
         <div class="game-player-view" id="gamePlayerView">
           <header class="game-player-header">
             <h2 class="game-player-title">
-              <i class="fas fa-gamepad" aria-hidden="true"></i> <span id="gamePlayerTitle">Game</span>
+              <i class="fas fa-gamepad" aria-hidden="true"></i> <span id="gamePlayerTitle">Activity</span>
             </h2>
             <div class="game-player-btns">
               <button class="fullpage-btn" id="gamePlayerReload">
@@ -2006,13 +2215,13 @@
               <i class="fas fa-circle-notch"></i>
               <span>Loading game...</span>
             </div>
+            <div class="pointer-lock-hint" id="pointerLockHint">Click game to lock mouse | Press ESC to release</div>
             <iframe 
               class="game-player-iframe" 
               id="gamePlayerIframe" 
               title="Game Player"
-              allow="fullscreen *; gamepad *; clipboard-write *;" 
+              allow="fullscreen *; gamepad *; clipboard-write *; pointer-lock *;" 
               allowfullscreen 
-              sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock"
             ></iframe>
           </div>
         </div>
@@ -2113,12 +2322,12 @@
           <div style="text-align: center;">
             <div class="partners-tag">
               <i class="fas fa-handshake" aria-hidden="true"></i>
-              networks we actually use
+              people we work with
             </div>
           </div>
 
           <p class="partners-intro">
-            Stuff we tested ourselves. Click cards to jump to their sites (opens in new tab).
+            sites we use. click to visit.
           </p>
 
           <div class="partners-grid" role="list">
@@ -2128,13 +2337,13 @@
                   <i class="fas fa-handshake" style="font-size: 32px; color: var(--accent);"></i>
                 </div>
               </div>
-              <h3 class="partner-name">Become a Partner</h3>
-              <p class="partner-desc">Interested in partnering with us? Fill out the form to get started!</p>
+              <h3 class="partner-name">Partner Form</h3>
+              <p class="partner-desc">want to partner? fill this out</p>
               <div class="partner-tags">
                 <span class="partner-tag-item">Partner</span>
                 <span class="partner-tag-item">Form</span>
               </div>
-              <span class="partner-btn">Open Form</span>
+              <span class="partner-btn">Open</span>
             </article>
             <article class="partner-card no-click">
               <div class="partner-logo-wrap">
@@ -2142,12 +2351,12 @@
                   <i class="fas fa-question" style="font-size: 32px; color: var(--muted);"></i>
                 </div>
               </div>
-              <h3 class="partner-name">Your Site Here?</h3>
-              <p class="partner-desc">Join our partner network! Use the form above to apply.</p>
+              <h3 class="partner-name">Your site?</h3>
+              <p class="partner-desc">use the form above</p>
               <div class="partner-tags">
                 <span class="partner-tag-item">Partner</span>
               </div>
-              <span class="partner-btn" style="cursor: default;">coming soon!</span>
+              <span class="partner-btn" style="cursor: default;">coming soon</span>
             </article>
           </div>
         </div>
@@ -2157,7 +2366,7 @@
 
   <!-- Keyboard Shortcuts Hint -->
   <div class="kbd-hint" aria-label="Keyboard shortcuts" role="complementary">
-    <span><kbd>G</kbd> Games</span>
+    <span><kbd>A</kbd> Activities</span>
     <span><kbd>M</kbd> Movies</span>
     <span><kbd>H</kbd> Home</span>
   </div>
@@ -2177,26 +2386,26 @@
         <div class="settings-section">
           <p class="settings-label">Theme</p>
           <div class="theme-grid">
-            <button class="theme-btn theme-dark" data-theme="dark" aria-label="Dark theme"></button>
-            <button class="theme-btn theme-light" data-theme="light" aria-label="Light theme"></button>
-            <button class="theme-btn theme-ocean" data-theme="ocean" aria-label="Ocean theme"></button>
-            <button class="theme-btn theme-forest" data-theme="forest" aria-label="Forest theme"></button>
-            <button class="theme-btn theme-sunset" data-theme="sunset" aria-label="Sunset theme"></button>
-            <button class="theme-btn theme-midnight" data-theme="midnight" aria-label="Midnight theme"></button>
-            <button class="theme-btn theme-cherry" data-theme="cherry" aria-label="Cherry theme"></button>
-            <button class="theme-btn theme-ember" data-theme="ember" aria-label="Ember theme"></button>
+            <button class="theme-btn theme-dark" data-theme="dark" aria-label="Dark"></button>
+            <button class="theme-btn theme-light" data-theme="light" aria-label="Light"></button>
+            <button class="theme-btn theme-ocean" data-theme="ocean" aria-label="Ocean"></button>
+            <button class="theme-btn theme-forest" data-theme="forest" aria-label="Forest"></button>
+            <button class="theme-btn theme-sunset" data-theme="sunset" aria-label="Sunset"></button>
+            <button class="theme-btn theme-midnight" data-theme="midnight" aria-label="Midnight"></button>
+            <button class="theme-btn theme-cherry" data-theme="cherry" aria-label="Cherry"></button>
+            <button class="theme-btn theme-ember" data-theme="ember" aria-label="Ember"></button>
           </div>
         </div>
 
         <div class="settings-section">
           <p class="settings-label">Performance</p>
           <div class="toggle-row">
-            <span class="toggle-text">FPS Booster <small>Optimizes rendering</small></span>
-            <button class="toggle-switch on" id="toggleFpsBooster" aria-label="FPS Booster"></button>
+            <span class="toggle-text">FPS Booster</span>
+            <button class="toggle-switch on" id="toggleFpsBooster"></button>
           </div>
           <div class="toggle-row">
-            <span class="toggle-text">Show Stats <small>FPS, Ping, Battery</small></span>
-            <button class="toggle-switch" id="toggleStats" aria-label="Show stats overlay"></button>
+            <span class="toggle-text">Show Stats</span>
+            <button class="toggle-switch" id="toggleStats"></button>
           </div>
         </div>
 
@@ -2206,6 +2415,49 @@
             <span class="toggle-text">Blur Effects</span>
             <button class="toggle-switch on" id="toggleBlur" aria-label="Blur effects"></button>
           </div>
+          <div class="toggle-row">
+            <span class="toggle-text">Stealth Hide <small>Hide content when tab is not visible</small></span>
+            <button class="toggle-switch" id="toggleStealthHide" aria-label="Stealth hide"></button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <p class="settings-label">Tab Cloak</p>
+          <p style="font-size: 11px; color: var(--muted); margin-bottom: 10px;">disguise this tab</p>
+          <div class="cloak-grid">
+            <button class="cloak-btn active" data-cloak="default">
+              <i class="fas fa-eye"></i>
+              sight.w
+            </button>
+            <button class="cloak-btn" data-cloak="clever">
+              <img src="https://clever.com/favicon.ico" alt="Clever">
+              Clever
+            </button>
+            <button class="cloak-btn" data-cloak="canvas">
+              <img src="https://canvas.instructure.com/favicon.ico" alt="Canvas">
+              Canvas
+            </button>
+            <button class="cloak-btn" data-cloak="google">
+              <img src="https://www.google.com/favicon.ico" alt="Google">
+              Google
+            </button>
+            <button class="cloak-btn" data-cloak="classroom">
+              <img src="https://classroom.google.com/favicon.ico" alt="Classroom">
+              Classroom
+            </button>
+            <button class="cloak-btn" data-cloak="drive">
+              <img src="https://drive.google.com/favicon.ico" alt="Drive">
+              Drive
+            </button>
+          </div>
+        </div>
+
+        <div class="stealth-section">
+          <p class="settings-label">Stealth</p>
+          <button class="stealth-btn" id="stealthModeBtn">
+            <i class="fas fa-user-secret"></i> about:blank
+          </button>
+          <p style="font-size: 10px; color: var(--muted); margin-top: 8px; text-align: center;">opens in hidden window</p>
         </div>
       </div>
     </div>
@@ -2229,26 +2481,26 @@
             <div style="margin-bottom: 12px;">
               <div class="credits-item-title">NativeLite</div>
               <div class="credits-item-note">
-                Games from <a href="https://github.com/parcoillegacy/nativelite" target="_blank" rel="noopener noreferrer">parcoillegacy/nativelite</a>
+                from <a href="https://github.com/parcoillegacy/nativelite" target="_blank" rel="noopener noreferrer">parcoillegacy/nativelite</a>
               </div>
             </div>
             <div>
               <div class="credits-item-title">Holy Salmon</div>
               <div class="credits-item-note">
-                Forked from <a href="https://github.com/ten8mystery/Holy-Salmon" target="_blank" rel="noopener noreferrer">ten8mystery/Holy-Salmon</a>
+                forked from <a href="https://github.com/ten8mystery/Holy-Salmon" target="_blank" rel="noopener noreferrer">ten8mystery/Holy-Salmon</a>
               </div>
             </div>
           </div>
 
           <div class="credits-block">
-            <div class="credits-label">Credits</div>
+            <div class="credits-label">Thanks</div>
             <div style="margin-bottom: 12px;">
               <div class="credits-item-title">Proxy</div>
-              <div class="credits-item-note">Credit to mathpunch Official ツ for proxy</div>
+              <div class="credits-item-note">mathpunch Official ツ</div>
             </div>
             <div>
-              <div class="credits-item-title">UI & Animation</div>
-              <div class="credits-item-note">Credit to crxzy for UI and animation on Cloudflare</div>
+              <div class="credits-item-title">UI stuff</div>
+              <div class="credits-item-note">crxzy</div>
             </div>
           </div>
 
@@ -2271,7 +2523,7 @@
           </div>
 
           <div class="credits-footer">
-            <span class="credits-tag">Made with ❤️</span>
+            <span class="credits-tag">made with love</span>
             <span>sight.w © 2025</span>
           </div>
         </div>
@@ -2360,79 +2612,313 @@
   </div>
 
   <script>
-    // ==================== UTILITIES ====================
+    // utils
     const $ = id => document.getElementById(id);
     const $all = sel => document.querySelectorAll(sel);
 
-    // Simple store using localStorage
+    // storage
     const store = {
       get: key => { try { return localStorage.getItem(key); } catch(e) { return null; } },
       set: (key, val) => { try { localStorage.setItem(key, val); } catch(e) {} }
     };
 
-    // ==================== GAMES DATA ====================
+    // games data
     const gamesData = [
       { name: "1v1lol", image: "logo.png", url: "1v1lol" },
-      { name: "Basket Random", image: "basket-random.png", url: "basket-random" },
-      { name: "Basketball Stars", image: "basketball-stars.png", url: "basketball-stars" },
-      { name: "Bitlife", image: "bitlife.png", url: "bitlife" },
-      { name: "Brawlhalla", image: "brawlhalla.png", url: "brawlhalla" },
-      { name: "Build Now GG", image: "build-now-gg.png", url: "buildnowgg" },
-      { name: "Bullet Force", image: "bullet-force.png", url: "bullet-force" },
-      { name: "Cluster Rush", image: "cluster-rush.png", url: "cluster-rush" },
-      { name: "Cookie Clicker", image: "cookieclicker.png", url: "cookieclicker" },
-      { name: "Crossy Road", image: "crossy-road.png", url: "crossy-road" },
-      { name: "Deepest Sword", image: "deepest-sword.png", url: "deepest-sword" },
-      { name: "Dogeminer", image: "doge.png", url: "dogeminer" },
-      { name: "Drift Boss", image: "drift-boss.png", url: "drift-boss" },
+      { name: "1v1space", image: "splash.png", url: "1v1space" },
+      { name: "10 Minutes Till Dawn", image: "splash.png", url: "10-minutes-till-dawn" },
+      { name: "100ng", image: "100ng.jpg", url: "100ng" },
+      { name: "2048", image: "2048.png", url: "2048" },
+      { name: "2048 Multitask", image: "splash.png", url: "2048-multitask" },
+      { name: "9007199254740992", image: "logo-4.png", url: "9007199254740992" },
+      { name: "DogeMiner", image: "favicon.ico", url: "DogeMiner" },
+      { name: "HexGL", image: "icon.png", url: "HexGL" },
+      { name: "Offline Paradise", image: "assets/icon.jpeg", url: "OfflineParadise" },
+      { name: "Stickman Survival", image: "Icon.png", url: "Stickman-Survival" },
+      { name: "A Dance of Fire and Ice", image: "splash.png", url: "a-dance-of-fire-and-ice" },
+      { name: "Achievement Unlocked", image: "achievementunlocked.png", url: "achievementunlocked" },
+      { name: "A Dark Room", image: "splash.png", url: "adarkroom" },
+      { name: "Adrenaline Challenge", image: "adrenalinechallenge.jpg", url: "adrenalinechallenge" },
+      { name: "Adventure Drivers", image: "splash.png", url: "adventure-drivers" },
+      { name: "Ages of Conflict", image: "splash.jpg", url: "ages-of-conflict" },
+      { name: "Alien Hominid", image: "alienhominid.jpg", url: "alienhominid" },
+      { name: "Align 4", image: "board.png", url: "align-4" },
+      { name: "Amidst the Clouds", image: "splash.png", url: "amidst-the-clouds" },
+      { name: "Among Us", image: "red.png", url: "among-us" },
+      { name: "Angry Sharks", image: "assets/img/splash.png", url: "angry-sharks" },
+      { name: "Aquapark Slides", image: "splash.png", url: "aquapark-slides" },
+      { name: "Astray", image: "splash.png", url: "astray" },
+      { name: "Avalanche", image: "avalanche.png", url: "avalanche" },
+      { name: "Awesome Tanks 2", image: "awesometanks2.jpg", url: "awesometanks2" },
+      { name: "Backrooms", image: "img/splash.jpg", url: "backrooms" },
+      { name: "Bad Ice Cream", image: "bad-ice-cream.png", url: "bad-ice-cream" },
+      { name: "Bad Ice Cream 2", image: "bad-ice-cream-2.png", url: "bad-ice-cream-2" },
+      { name: "Bad Ice Cream 3", image: "bad-ice-cream-3.png", url: "bad-ice-cream-3" },
+      { name: "Baldi's Basics", image: "splash.png", url: "baldis-basics" },
+      { name: "Ballistic Chickens", image: "logo.png", url: "ballistic-chickens" },
+      { name: "Basket Random", image: "splash.jpeg", url: "basket-random" },
+      { name: "Basketball Stars", image: "assets/images/basketball-stars.png", url: "basketball-stars" },
+      { name: "Basketbros.io", image: "thumb.jpg", url: "basketbros-io" },
+      { name: "Battle for Gondor", image: "battleforgondor.JPG", url: "battleforgondor" },
+      { name: "Big Red Button", image: "bigredbutton.png", url: "bigredbutton" },
+      { name: "BitLife", image: "splash.png", url: "bitlife" },
+      { name: "Black Hole Square", image: "icon.png", url: "blacholesquare" },
+      { name: "Black Knight", image: "blackknight.png", url: "blackknight" },
+      { name: "Bloons TD", image: "bloonstd.jpg", url: "bloonstd" },
+      { name: "Bloons TD 2", image: "bloonstd2.png", url: "bloonstd2" },
+      { name: "Bloxors", image: "title.png", url: "bloxors" },
+      { name: "BNTTS", image: "icons/icon-256.png", url: "bntts" },
+      { name: "Bob the Robber 2", image: "splash.jpeg", url: "bobtherobber2" },
+      { name: "Boxhead 2 Play", image: "boxhead2play.jpg", url: "boxhead2play" },
+      { name: "Boxing Random", image: "512x512.jpg", url: "boxing-random" },
+      { name: "Breaking the Bank", image: "breakingthebank.png", url: "breakingthebank" },
+      { name: "BTTS", image: "images.png", url: "btts" },
+      { name: "Burger and Frights", image: "splash.png", url: "burger-and-frights" },
+      { name: "Cannon Basketball 4", image: "img/splash.png", url: "cannon-basketball-4" },
+      { name: "Canyon Defense", image: "canyondefense.png", url: "canyondefense" },
+      { name: "Cars Simulator", image: "splash.png", url: "cars-simulator" },
+      { name: "Cell Machine", image: "img/te9nDu.png", url: "cell-machine" },
+      { name: "Champion Island", image: "splash.png", url: "champion-island" },
+      { name: "Champion Archer", image: "championarcher.png", url: "championarcher" },
+      { name: "Chill Radio", image: "img/chill-icon.png", url: "chill-radio" },
+      { name: "Chrome Dino", image: "images/default_100_percent/offline/100-error-offline.png", url: "chrome-dino" },
+      { name: "Circlo", image: "img/download.png", url: "circlo" },
+      { name: "Cluster Rush", image: "splash.png", url: "cluster-rush" },
+      { name: "CN Ping Pong", image: "tabletennisultimate.png", url: "cnpingpong" },
+      { name: "Connect 3", image: "connect3.png", url: "connect3" },
+      { name: "Cookie Clicker", image: "cookie1.jpeg", url: "cookie-clicker" },
+      { name: "Core Ball", image: "pr_source.png", url: "core-ball" },
+      { name: "Craftmine", image: "images/animal-sheet0.png", url: "craftmine" },
+      { name: "Creative Kill Chamber", image: "creativekillchamber.jpg", url: "creativekillchamber" },
+      { name: "Crossy Road", image: "crossyroad.png", url: "crossyroad" },
+      { name: "CS:GO Clicker", image: "images/case1.png", url: "csgo-clicker" },
+      { name: "CTR", image: "logo.png", url: "ctr" },
+      { name: "CTR Holiday", image: "favicon.ico", url: "ctr-holiday" },
+      { name: "CTR TR", image: "logo.png", url: "ctr-tr" },
+      { name: "Cubefield", image: "assets/unnamed.png", url: "cubefield" },
+      { name: "Cupcake 2048", image: "favicon.ico", url: "cupcake2048" },
+      { name: "Dante", image: "splash.png", url: "dante" },
+      { name: "Deal or No Deal", image: "index.jpg", url: "deal-or-no-deal" },
+      { name: "Death Run 3D", image: "img/death.png", url: "death-run-3d" },
+      { name: "Defend the Tank", image: "images/splash.jpg", url: "defend-the-tank" },
+      { name: "Doctor Acorn 2", image: "splash.jpg", url: "doctor-acorn2" },
+      { name: "Doge 2048", image: "doge1.jpeg", url: "doge2048" },
+      { name: "Doodle Jump", image: "doodle.png", url: "doodle-jump" },
+      { name: "Double Wires", image: "doublewires.png", url: "doublewires" },
+      { name: "Dragon vs. Bricks", image: "splash.png", url: "dragon-vs-bricks" },
+      { name: "Draw the Hill", image: "icons/icon-512.png", url: "draw-the-hill" },
+      { name: "Drift Boss", image: "logo.png", url: "drift-boss" },
       { name: "Drift Hunters", image: "drift-hunters.png", url: "drift-hunters" },
-      { name: "Drive Mad", image: "drive-mad.png", url: "drive-mad" },
-      { name: "Eggy Car", image: "eggy-car.png", url: "eggy-car" },
-      { name: "Fall Boys", image: "fall-boys.png", url: "fall-boys" },
-      { name: "Friday Night Funkin", image: "fnf.png", url: "fnf" },
-      { name: "Geometry Dash", image: "gdash.png", url: "geometrydash" },
-      { name: "Geometry Dash Lite", image: "gdlite.png", url: "geometry-dash-lite" },
-      { name: "Geometry Dash Scratch", image: "gdscratch.png", url: "geometry-dash-scratch" },
-      { name: "G Switch 3", image: "g-switch-3.png", url: "g-switch-3" },
-      { name: "Hole.io", image: "hole-io.png", url: "hole-io" },
-      { name: "Idle Breakout", image: "idle-breakout.png", url: "idle-breakout" },
-      { name: "Impossible Quiz", image: "impossible-quiz.png", url: "impossible-quiz" },
-      { name: "Moto X3M", image: "moto-x3m.png", url: "moto-x3m" },
-      { name: "Moto X3M 2", image: "moto-x3m-2.png", url: "moto-x3m-2" },
-      { name: "Moto X3M 3", image: "moto-x3m-3.png", url: "moto-x3m-3" },
-      { name: "Moto X3M Winter", image: "moto-x3m-winter.png", url: "moto-x3m-winter" },
-      { name: "Mr Bullet", image: "mr-bullet.png", url: "mr-bullet" },
-      { name: "OvO", image: "ovo.png", url: "ovo" },
-      { name: "Paper.io 2", image: "paper-io-2.png", url: "paper-io-2" },
-      { name: "Pixel Gun Apocalypse", image: "pixel-gun.png", url: "pixel-gun-apocalypse" },
-      { name: "Retro Bowl", image: "retro-bowl.png", url: "retro-bowl" },
-      { name: "Rocket League", image: "rocket-league.png", url: "rocket-league" },
-      { name: "Rooftop Snipers", image: "rooftop-snipers.png", url: "rooftop-snipers" },
-      { name: "Run 3", image: "run3.png", url: "run3" },
-      { name: "Slope", image: "slope.png", url: "slope" },
-      { name: "Slope 2", image: "slope-2.png", url: "slope-2" },
-      { name: "Smash Karts", image: "smash-karts.png", url: "smash-karts" },
-      { name: "Snake", image: "snake.png", url: "snake" },
-      { name: "Snow Rider 3D", image: "snow-rider-3d.png", url: "snow-rider-3d" },
-      { name: "Stumble Guys", image: "stumble-guys.png", url: "stumble-guys" },
-      { name: "Subway Surfers", image: "subway-surfers.png", url: "subway-surfers" },
-      { name: "Soccer Random", image: "soccer-random.png", url: "soccer-random" },
-      { name: "Sugar Sugar", image: "sugar-sugar.png", url: "sugar-sugar" },
-      { name: "Superhot", image: "superhot.png", url: "superhot" },
-      { name: "Tanuki Sunset", image: "tanuki-sunset.png", url: "tanuki-sunset" },
-      { name: "Temple Run 2", image: "temple-run-2.png", url: "temple-run-2" },
-      { name: "Terraria", image: "terraria.png", url: "terraria" },
-      { name: "Tunnel Rush", image: "tunnel-rush.png", url: "tunnel-rush" },
-      { name: "Tunnel Rush 2", image: "tunnel-rush-2.png", url: "tunnel-rush-2" },
+      { name: "Drive Mad", image: "logo.jpg", url: "drive-mad" },
+      { name: "Duck Life 1", image: "ducklife.png", url: "ducklife1" },
+      { name: "Duck Life 2", image: "ducklife2.png", url: "ducklife2" },
+      { name: "Duck Life 3", image: "duck.png", url: "ducklife3" },
+      { name: "Duck Life 4", image: "splash.jpg", url: "ducklife4" },
+      { name: "Edge Surf", image: "splash.png", url: "edge-surf" },
+      { name: "Edge Not Found", image: "edge.png", url: "edgenotfound" },
+      { name: "Eel Slap", image: "eel-slap.png", url: "eel-slap" },
+      { name: "Elastic Man", image: "elasticman.jpg", url: "elasticman" },
+      { name: "Endless War 3", image: "endlesswar3.png", url: "endlesswar3" },
+      { name: "Escaping the Prison", image: "escapingtheprison.jpg", url: "escapingtheprison" },
+      { name: "Evil Glitch", image: "evil.png", url: "evil-glitch" },
+      { name: "Evolution", image: "splash.png", url: "evolution" },
+      { name: "Exo", image: "img/small.jpg", url: "exo" },
+      { name: "Factory Balls", image: "images/splash.png", url: "factoryballs" },
+      { name: "Fairsquares", image: "index.icon.png", url: "fairsquares" },
+      { name: "Fake Virus", image: "icon.png", url: "fake-virus" },
+      { name: "Fancy Pants Adventures", image: "fancypantsadventure.png", url: "fancypantsadventures" },
+      { name: "Fireboy and Watergirl", image: "logo.jpeg", url: "fireboywatergirlforesttemple" },
+      { name: "Flappy 2048", image: "favicon.ico", url: "flappy-2048" },
+      { name: "Flappy Bird", image: "flappybird.jpg", url: "flappy-bird" },
+      { name: "Flash Tetris", image: "flashtetris.png", url: "flashtetris" },
+      { name: "Flippy Fish", image: "2022_10_28_0jt_Kleki.png", url: "flippy-fish" },
+      { name: "Five Nights at Wario's", image: "splash.png", url: "fnaw" },
+      { name: "Friday Night Funkin'", image: "fnf-icon.jpg", url: "fridaynightfunkin" },
+      { name: "Froggy's Battle", image: "splash.png", url: "froggys-battle" },
+      { name: "Fruit Ninja", image: "FruitNinjaTeaser.jpg", url: "fruitninja" },
+      { name: "Frying Nemo", image: "splash.png", url: "frying-nemo" },
+      { name: "Game Inside", image: "img/display.png", url: "game-inside" },
+      { name: "Generic Fishing Game", image: "splash.png", url: "generic-fishing-game" },
+      { name: "Geo Dash", image: "geoscratchicon.png", url: "geodash" },
+      { name: "George and the Printer", image: "img/SnDTEn.png", url: "georgeandtheprinter" },
+      { name: "Getaway Shootout", image: "img/images.jpg", url: "getaway-shootout" },
+      { name: "Gimme the Airpod", image: "img/logo.png", url: "gimme-the-airpod" },
+      { name: "Glass City", image: "image.png", url: "glass-city" },
+      { name: "Go Ball", image: "game.jpg", url: "go-ball" },
+      { name: "Goodnight", image: "goodnight.jpg", url: "goodnight" },
+      { name: "Google Feud", image: "splash.png", url: "google-feud" },
+      { name: "Google Snake", image: "img/snake.png", url: "google-snake" },
+      { name: "Gravity Soccer", image: "splash.png", url: "gravity-soccer" },
+      { name: "Greybox", image: "ico.png", url: "greybox" },
+      { name: "Grindcraft", image: "img/splash.png", url: "grindcraft" },
+      { name: "Hacker Type", image: "logo192.png", url: "hackertype" },
+      { name: "Handshakes", image: "splaher.png", url: "handshakes" },
+      { name: "Happy Hop", image: "splash.png", url: "happy-hop" },
+      { name: "HBA", image: "hoverbotarena.JPG", url: "hba" },
+      { name: "Helicopter", image: "helicopter.png", url: "helicopter" },
+      { name: "Hex Empire", image: "hexempire.jpg", url: "hexempire" },
+      { name: "Hextris", image: "images/hextris-logo.png", url: "hextris" },
+      { name: "Hungry Lamu", image: "splash.png", url: "hungry-lamu" },
+      { name: "Idle Breakout", image: "img/thumbnail.png", url: "idle-breakout" },
+      { name: "Idle Shark", image: "img/sharkgame.png", url: "idle-shark" },
+      { name: "Impossible Quiz", image: "impossiblequiz.png", url: "impossiblequiz" },
+      { name: "Interactive Buddy", image: "interactivebuddy.jpg", url: "interactivebuddy" },
+      { name: "Jetpack Joyride", image: "splash.jpg", url: "jetpack-joyride" },
+      { name: "Just Fall", image: "unnamed.png", url: "just-fall" },
+      { name: "Just One Boss", image: "pv1Gr5.png", url: "just-one-boss" },
+      { name: "Kitchen Gun Game", image: "splash.png", url: "kitchen-gun-game" },
+      { name: "Kitten Cannon", image: "kittencannon.png", url: "kittencannon" },
+      { name: "Knife Master", image: "512x512.jpg", url: "knife-master" },
+      { name: "Krunker", image: "img/krunker-io.jpg", url: "krunker" },
+      { name: "Learn to Fly", image: "learntofly.png", url: "learntofly" },
+      { name: "Learn to Fly 2", image: "learn-to-fly-2.jpg", url: "learntofly2" },
+      { name: "Madalin Stunt Cars 2", image: "img/logo.jpg", url: "madalin-stunt-cars-2" },
+      { name: "Madalin Stunt Cars 3", image: "img/index.jpg", url: "madalin-stunt-cars-3" },
+      { name: "Mario", image: "Theme/Mario.gif", url: "mario" },
+      { name: "Marvin Spectrum", image: "marvinspectrum.png", url: "marvinspectrum" },
+      { name: "Matrix Rampage", image: "matrixrampage.jpg", url: "matrixrampage" },
+      { name: "Meme 2048", image: "img/hot.gif", url: "meme2048" },
+      { name: "Merge Round Racers", image: "splash.png", url: "merge-round-racers" },
+      { name: "Mine Blocks", image: "splash.png", url: "mineblocks" },
+      { name: "Minecraft 1.5", image: "splash.jpeg", url: "minecraft-15" },
+      { name: "Minecraft 1.8", image: "splash.png", url: "minecraft-18" },
+      { name: "Minecraft Classic", image: "pack.png", url: "minecraft-classic" },
+      { name: "Minecraft Beta", image: "bg_main.png", url: "minecraftbeta" },
+      { name: "Minesweeper", image: "img/minesweeper.png", url: "minesweeper" },
+      { name: "Mini Putt", image: "miniputt.png", url: "miniputt" },
+      { name: "Missiles", image: "miss.png", url: "missiles" },
+      { name: "Moto X3M", image: "splash.jpg", url: "motox3m" },
+      { name: "Moto X3M Pool", image: "splash.jpg", url: "motox3m-pool" },
+      { name: "Moto X3M Spooky", image: "splash.jpeg", url: "motox3m-spooky" },
+      { name: "Moto X3M Winter", image: "download.jpeg", url: "motox3m-winter" },
+      { name: "Moto X3M 2", image: "Moto-X3M-2.webp", url: "motox3m2" },
+      { name: "My Rusty Submarine", image: "splash.png", url: "my-rusty-submarine" },
+      { name: "N-Gon", image: "img/n-gonbot.png", url: "n-gon" },
+      { name: "Ninja", image: "logo1.png", url: "ninja" },
+      { name: "Ninja vs Evil Corp", image: "splash.png", url: "ninjavsevilcorp" },
+      { name: "Noob Steve Parkour", image: "512x512.jpg", url: "noob-steve-parkour" },
+      { name: "NS Shaft", image: "favicon.png", url: "ns-shaft" },
+      { name: "NS Resurgence", image: "neon.png", url: "nsresurgence" },
+      { name: "Om Bounce", image: "assets/icon.jpeg", url: "om-bounce" },
+      { name: "OVO", image: "ovo3.png", url: "ovo" },
+      { name: "Pandemic 2", image: "pandemic2.png", url: "pandemic2" },
+      { name: "Papa's Burgeria", image: "splash.jpg", url: "papasburgeria" },
+      { name: "Papa's Pizzeria", image: "papaspizzaria.jpg", url: "papaspizzaria" },
+      { name: "Paper.io 2", image: "images/icon512.png", url: "paperio2" },
+      { name: "Papery Planes", image: "splash.jpg", url: "papery-planes" },
+      { name: "Particle Clicker", image: "assets/pc32@2x.png", url: "particle-clicker" },
+      { name: "Pixel Gun Survival", image: "512x512.png", url: "pixel-gun-survival" },
+      { name: "Polybranch", image: "img/pic1.png", url: "polybranch" },
+      { name: "Popcat Classic", image: "android-chrome-512x512.png", url: "popcat-classic" },
+      { name: "Portal Flash", image: "portaltheflashversion.jpg", url: "portalflash" },
+      { name: "Precision Client", image: "logo.png", url: "precision-client" },
+      { name: "Protektor", image: "splash.jpg", url: "protektor" },
+      { name: "Push the Square", image: "img/splash.png", url: "push-the-square" },
+      { name: "Push Your Luck", image: "assets/img/push.png", url: "push-your-luck" },
+      { name: "Rabbit Samurai", image: "splash.png", url: "rabbit-samurai" },
+      { name: "Rabbit Samurai 2", image: "splash.png", url: "rabbit-samurai2" },
+      { name: "Resent Client", image: "splash.jpg", url: "resent-client" },
+      { name: "Retro Bowl", image: "img/icon.jpg", url: "retro-bowl" },
+      { name: "Riddle School", image: "riddleschool.png", url: "riddleschool" },
+      { name: "Riddle School 2", image: "riddleschool2.png", url: "riddleschool2" },
+      { name: "Riddle School 3", image: "riddleschool3.png", url: "riddleschool3" },
+      { name: "Riddle School 4", image: "riddleschool4.png", url: "riddleschool4" },
+      { name: "Riddle School 5", image: "riddleschool5.png", url: "riddleschool5" },
+      { name: "Riddle Transfer", image: "riddletransfer.png", url: "riddletransfer" },
+      { name: "Riddle Transfer 2", image: "riddletransfer2.png", url: "riddletransfer2" },
+      { name: "Rolling Forests", image: "icon.png", url: "rolling-forests" },
+      { name: "Rolly Vortex", image: "icon-256.png", url: "rolly-vortex" },
+      { name: "Rooftop Snipers", image: "img/thumb.png", url: "rooftop-snipers" },
+      { name: "Ruffle", image: "splash.png", url: "ruffle" },
+      { name: "Slap The Monkey", image: "slap-the-monkey.jpg", url: "slap-the-monkey" },
+      { name: "Sand Game", image: "sand-game.PNG", url: "sand-game" },
+      { name: "Sandboxels", image: "sandboxels.jpg", url: "sandboxels" },
+      { name: "Santy is Home", image: "splash.png", url: "santy-is-home" },
+      { name: "Scrap Metal", image: "img/splash.png", url: "scrapmetal" },
+      { name: "Shell Shockers", image: "img/favicon.png", url: "shellshockers" },
+      { name: "Shot in the Dark", image: "shot.png", url: "shotinthedark" },
+      { name: "Shuttle Deck", image: "splash.png", url: "shuttledeck" },
+      { name: "Sky Car Stunt", image: "512x512.jpg", url: "sky-car-stunt" },
+      { name: "Sleeping Beauty", image: "splash.png", url: "sleepingbeauty" },
+      { name: "Slime Rush TD", image: "splash.png", url: "slime-rush-td" },
+      { name: "Slope", image: "slope4.jpeg", url: "slope" },
+      { name: "Slope 2", image: "slope-2-logo.png", url: "slope-2" },
+      { name: "Slope Ball", image: "icon.jpg", url: "slope-ball" },
+      { name: "Smash Karts", image: "images/icon-512.png", url: "smashkarts" },
+      { name: "Smoking Barrels", image: "smokingbarrels.jpg", url: "smokingbarrels" },
+      { name: "Snow Battle", image: "img/logo.png", url: "snowbattle" },
+      { name: "Soccer Random", image: "splash.png", url: "soccer-random" },
+      { name: "Soccer Skills", image: "splash.png", url: "soccer-skills" },
+      { name: "Soldier Legend", image: "images/logo.jpg", url: "soldier-legend" },
+      { name: "Solitaire", image: "img/hover.jpg", url: "solitaire" },
+      { name: "Sort the Court", image: "img/splash.png", url: "sort-the-court" },
+      { name: "Soundboard", image: "img/mlg-favicon.png", url: "soundboard" },
+      { name: "Space Company", image: "whiteLogo.png", url: "space-company" },
+      { name: "Space Garden", image: "spl.png", url: "spacegarden" },
+      { name: "Spinning Rat", image: "favicon-32x32.png", url: "spinningrat" },
+      { name: "Stack", image: "stack.png", url: "stack" },
+      { name: "Stack Bump 3D", image: "thumbnail.jpg", url: "stack-bump-3d" },
+      { name: "Starve", image: "img/favicon.png", url: "starve" },
+      { name: "Station 141", image: "75wxYs.png", url: "station-141" },
+      { name: "Stealing the Diamond", image: "stealingthediamond.jpg", url: "stealingthediamond" },
+      { name: "Stick Archers", image: "splash.jpg", url: "stick-archers" },
+      { name: "Stick Duel Battle", image: "512x512.jpg", url: "stick-duel-battle" },
+      { name: "Stick Merge", image: "splash.png", url: "stick-merge" },
+      { name: "Stickman Boost", image: "icon-256.png", url: "stickman-boost" },
+      { name: "Stickman Golf", image: "splash.png", url: "stickman-golf" },
+      { name: "Stickman Hook", image: "unnamed.jpg", url: "stickman-hook" },
+      { name: "Stick War", image: "stickwar.jpg", url: "stickwar" },
+      { name: "Storm the House 2", image: "stormthehouse2.jpg", url: "stormthehouse2" },
+      { name: "Subway Surfers", image: "img/splash.jpg", url: "subway-surfers" },
+      { name: "Subway Surfers NY", image: "NewYorkIcon.png", url: "subway-surfers-ny" },
+      { name: "Superhot", image: "hot.jpg", url: "superhot" },
+      { name: "Super Mario Construct", image: "icons/icon-256.png", url: "supermarioconstruct" },
+      { name: "Surviv", image: "img/favicon.png", url: "surviv" },
+      { name: "Sushi Unroll", image: "favicon.png", url: "sushi-unroll" },
+      { name: "Swerve", image: "img/favicon.jpg", url: "swerve" },
+      { name: "Synesthesia", image: "index.splash.png", url: "synesthesia" },
+      { name: "Tactical Weapon Pack 2", image: "splash.jpg", url: "tactical-weapon-pack-2" },
+      { name: "Tactical Assassin 2", image: "tacticalassassin2.png", url: "tacticalassasin2" },
+      { name: "Tank Trouble 2", image: "tank.jpeg", url: "tank-trouble-2" },
+      { name: "Tanuki Sunset", image: "img/logo.png", url: "tanuki-sunset" },
+      { name: "Temple Run 2", image: "img/temple-run-2-256.png", url: "temple-run-2" },
+      { name: "The Final Earth", image: "images.png", url: "the-final-earth" },
+      { name: "The Hotel", image: "splash.png", url: "the-hotel" },
+      { name: "The Battle", image: "thebattle.png", url: "thebattle" },
+      { name: "The Heist", image: "theheist.jpg", url: "theheist" },
+      { name: "There Is No Game", image: "logo.png", url: "there-is-no-game" },
+      { name: "This Is the Only Level", image: "thisistheonlylevel.png", url: "thisistheonlylevel" },
+      { name: "Tiny Fishing", image: "tiny-fishing.png", url: "tiny-fishing" },
+      { name: "Tiny Islands", image: "splash.png", url: "tiny-islands" },
+      { name: "Toss the Turtle", image: "tosstheturtle.png", url: "tosstheturtle" },
+      { name: "Townscaper", image: "img/cover.jpg", url: "townscaper" },
+      { name: "Tube Jumpers", image: "img/icon.jpg", url: "tube-jumpers" },
+      { name: "Tunnel Rush", image: "img/tunnel.jpg", url: "tunnel-rush" },
+      { name: "TV Static", image: "static.png", url: "tv-static" },
+      { name: "Twitch Tetris", image: "logo.png", url: "twitch-tetris" },
+      { name: "Veloce", image: "qN6zkD.png", url: "veloce" },
       { name: "Vex 3", image: "vex3.png", url: "vex3" },
       { name: "Vex 4", image: "vex4.png", url: "vex4" },
       { name: "Vex 5", image: "vex.jpeg", url: "vex5" },
       { name: "Vex 6", image: "assets/icon.png", url: "vex6" },
       { name: "Vex 7", image: "assets/icon.png", url: "vex7" },
+      { name: "Wall Smash", image: "thumb.png", url: "wallsmash" },
+      { name: "Waterworks", image: "square.png", url: "waterworks" },
+      { name: "WeaveSilk", image: "thumb.png", url: "weavesilk" },
+      { name: "WebGL Fluid Simulation", image: "promo_back.png", url: "webgl-fluid-simulation" },
+      { name: "WebRetro", image: "assets/icons/iconm256.png", url: "webretro" },
+      { name: "Win the White House", image: "splash.png", url: "win-the-whitehouse" },
+      { name: "Wolf 3D", image: "art/wolf3d.png", url: "wolf3d" },
       { name: "Wordle", image: "img/logo_512x512.png", url: "wordle" },
       { name: "World's Hardest Game", image: "images/splash.jpg", url: "worlds-hardest-game" },
-      { name: "Zombs Royale", image: "zomb.png", url: "zombs-royale" },
+      { name: "World's Hardest Game 2", image: "the-worlds-hardest-game-2.jpg", url: "worlds-hardest-game-2" },
+      { name: "X-Trial Racing", image: "splash.png", url: "x-trial-racing" },
+      { name: "xx142-B2.exe", image: "splash.png", url: "xx142-b2exe" },
+      { name: "Yoshi Fabrication", image: "icons/icon-512.png", url: "yoshifabrication" },
+      { name: "You Are Bezos", image: "img/banner.png", url: "you-are-bezos" },
+      { name: "Zombs Royale", image: "zomb.png", url: "zombs-royale" }
     ];
+
 
     // Eaglercraft clients
     const eaglercraftClients = {
@@ -2548,7 +3034,7 @@ loadAndRun();<\/script></body></html>`
     let currentGameName = '';
     let currentEaglercraftClient = '';
 
-    // ==================== LOADING SCREEN ====================
+    // loading screen
     const loadingScreen = $('loadingScreen');
     if (loadingScreen) {
       setTimeout(() => {
@@ -2556,7 +3042,7 @@ loadAndRun();<\/script></body></html>`
       }, 1200);
     }
 
-    // ==================== TIME & DATE ====================
+    // time
     function updateTime() {
       const now = new Date();
       const timeEl = $('time');
@@ -2573,7 +3059,7 @@ loadAndRun();<\/script></body></html>`
     updateTime();
     setInterval(updateTime, 1000);
 
-    // ==================== SEARCH ====================
+    // search
     const searchForm = $('searchForm');
     const searchInput = $('searchInput');
 
@@ -2590,7 +3076,7 @@ loadAndRun();<\/script></body></html>`
 
 
 
-    // ==================== FPS COUNTER ====================
+    // fps
     let frameCount = 0;
     let lastTime = performance.now();
     let fps = 60;
@@ -2612,7 +3098,7 @@ loadAndRun();<\/script></body></html>`
     }
     updateFPS();
 
-    // ==================== PING CHECK ====================
+    // ping
     async function checkPing() {
       const start = performance.now();
       try {
@@ -2631,7 +3117,7 @@ loadAndRun();<\/script></body></html>`
     checkPing();
     setInterval(checkPing, 5000);
 
-    // ==================== BATTERY ====================
+    // battery
     if ('getBattery' in navigator) {
       navigator.getBattery().then(battery => {
         function updateBattery() {
@@ -2647,14 +3133,28 @@ loadAndRun();<\/script></body></html>`
       });
     }
 
-    // ==================== SETTINGS TOGGLES ====================
-    // FPS Booster
+    // settings toggles
+    // FPS Booster - actually does something now
     const toggleFpsBooster = $('toggleFpsBooster');
+    function applyFpsBoost(enabled) {
+      if (enabled) {
+        document.body.classList.add('fps-boost-mode');
+        // Reduce animation frame rate
+        document.documentElement.style.setProperty('--anim-duration', '0s');
+      } else {
+        document.body.classList.remove('fps-boost-mode');
+        document.documentElement.style.removeProperty('--anim-duration');
+      }
+    }
+    
     if (toggleFpsBooster) {
-      toggleFpsBooster.classList.toggle('on', store.get('fpsBooster') !== 'false');
+      const savedFpsBoost = store.get('fpsBooster') !== 'false';
+      toggleFpsBooster.classList.toggle('on', savedFpsBoost);
+      applyFpsBoost(savedFpsBoost);
       toggleFpsBooster.addEventListener('click', () => {
-        toggleFpsBooster.classList.toggle('on');
-        store.set('fpsBooster', toggleFpsBooster.classList.contains('on'));
+        const isEnabled = toggleFpsBooster.classList.toggle('on');
+        store.set('fpsBooster', isEnabled);
+        applyFpsBoost(isEnabled);
       });
     }
 
@@ -2685,7 +3185,18 @@ loadAndRun();<\/script></body></html>`
       });
     }
 
-    // ==================== PANIC BUTTON ====================
+    // Stealth Hide
+    const toggleStealthHide = $('toggleStealthHide');
+    if (toggleStealthHide) {
+      const savedStealthHide = store.get('stealthHide') === 'true';
+      toggleStealthHide.classList.toggle('on', savedStealthHide);
+      toggleStealthHide.addEventListener('click', () => {
+        toggleStealthHide.classList.toggle('on');
+        store.set('stealthHide', toggleStealthHide.classList.contains('on'));
+      });
+    }
+
+    // panic button
     document.addEventListener('keydown', (e) => {
       if (e.key === '`' || e.key === '~') {
         const popup = window.open('', '_blank', 'width=1,height=1');
@@ -2700,7 +3211,7 @@ loadAndRun();<\/script></body></html>`
       }
     });
 
-    // ==================== THEME MANAGEMENT ====================
+    // themes
     let currentTheme = store.get('theme') || 'dark';
     document.body.setAttribute('data-theme', currentTheme);
 
@@ -2715,7 +3226,152 @@ loadAndRun();<\/script></body></html>`
       });
     });
 
-    // ==================== NAVIGATION ====================
+    // tab cloak
+    const cloakOptions = {
+      default: {
+        title: 'sight.w',
+        favicon: 'https://image2url.com/r2/default/images/1772114193046-733bfa71-77a7-4fdc-bce4-d3e8ebe17a29.png'
+      },
+      clever: {
+        title: 'Clever | Portal',
+        favicon: 'https://clever.com/favicon.ico'
+      },
+      canvas: {
+        title: 'Canvas',
+        favicon: 'https://canvas.instructure.com/favicon.ico'
+      },
+      google: {
+        title: 'Google',
+        favicon: 'https://www.google.com/favicon.ico'
+      },
+      classroom: {
+        title: 'Google Classroom',
+        favicon: 'https://classroom.google.com/favicon.ico'
+      },
+      drive: {
+        title: 'Google Drive',
+        favicon: 'https://drive.google.com/favicon.ico'
+      }
+    };
+
+    let currentCloak = store.get('cloak') || 'default';
+
+    function setCloak(cloakKey) {
+      const cloak = cloakOptions[cloakKey];
+      if (!cloak) return;
+
+      currentCloak = cloakKey;
+      store.set('cloak', cloakKey);
+
+      // Update title
+      document.title = cloak.title;
+
+      // Update favicon
+      const existingFavicon = document.querySelector('link[rel="icon"]');
+      if (existingFavicon) {
+        existingFavicon.href = cloak.favicon;
+      } else {
+        const newFavicon = document.createElement('link');
+        newFavicon.rel = 'icon';
+        newFavicon.href = cloak.favicon;
+        document.head.appendChild(newFavicon);
+      }
+
+      // Update active state on buttons
+      $all('.cloak-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.cloak === cloakKey);
+      });
+    }
+
+    // saved cloak
+    setCloak(currentCloak);
+
+    // cloak buttons
+    $all('.cloak-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setCloak(btn.dataset.cloak);
+      });
+    });
+
+    // stealth window
+    const stealthModeBtn = $('stealthModeBtn');
+    if (stealthModeBtn) {
+      stealthModeBtn.addEventListener('click', () => {
+        const stealthWindow = window.open('about:blank', '_blank');
+        if (stealthWindow) {
+          stealthWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Loading...</title>
+              <style>
+                body { margin: 0; overflow: hidden; background: #fff; }
+                iframe { position: fixed; inset: 0; border: none; width: 100%; height: 100%; }
+              </style>
+            </head>
+            <body>
+              <iframe src="${window.location.href}"></iframe>
+            </body>
+            </html>
+          `);
+          stealthWindow.document.close();
+        }
+      });
+    }
+
+    // bypass
+    const bypass = {
+      openBlank: () => {
+        const w = window.open('about:blank', '_blank');
+        if (w) {
+          w.document.write(`<!DOCTYPE html><html><head><title>Google Classroom</title><link rel="icon" href="https://classroom.google.com/favicon.ico"><style>body{margin:0;overflow:hidden;background:#fff}</style></head><body><iframe src="${window.location.href}" style="position:fixed;inset:0;border:none;width:100%;height:100%;"></iframe></body></html>`);
+          w.document.close();
+        }
+      },
+
+      openBlob: () => {
+        const html = `<!DOCTYPE html><html><head><title>Google Docs</title><link rel="icon" href="https://docs.google.com/favicon.ico"><style>body{margin:0;overflow:hidden;}</style></head><body><iframe src="${window.location.href}" style="position:fixed;inset:0;border:none;width:100%;height:100%;"></iframe></body></html>`;
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+      },
+
+      openDataUrl: () => {
+        const html = document.documentElement.outerHTML;
+        window.location.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+      },
+
+      overlay: () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = window.location.href;
+        iframe.style.cssText = 'position:fixed;inset:0;border:none;width:100%;height:100%;z-index:999999;background:#fff;';
+        document.body.innerHTML = '';
+        document.body.appendChild(iframe);
+      }
+    };
+
+    // press P twice fast
+    let lastPTime = 0;
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'p') {
+        const now = Date.now();
+        if (now - lastPTime < 500) {
+          bypass.openBlank();
+        }
+        lastPTime = now;
+      }
+    });
+
+    // stealth hide
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && store.get('stealthHide') === 'true') {
+        document.body.style.opacity = '0';
+      } else {
+        document.body.style.opacity = '1';
+      }
+    });
+
+    // navigation
     let currentPage = 'home';
     let currentGamesView = 'menu';
 
@@ -2773,6 +3429,40 @@ loadAndRun();<\/script></body></html>`
       }
     }
 
+    // Pointer Lock for games
+    let isPointerLocked = false;
+    
+    function requestPointerLock(iframe) {
+      if (!iframe) return;
+      // For same-origin iframes, we can request pointer lock
+      try {
+        iframe.requestPointerLock = iframe.requestPointerLock || iframe.mozRequestPointerLock || iframe.webkitRequestPointerLock;
+        if (iframe.requestPointerLock) {
+          iframe.requestPointerLock();
+        }
+      } catch(e) {
+        // Cross-origin, can't directly lock
+      }
+    }
+    
+    function exitPointerLock() {
+      document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock || document.webkitExitPointerLock;
+      if (document.exitPointerLock) {
+        document.exitPointerLock();
+      }
+    }
+    
+    document.addEventListener('pointerlockchange', () => {
+      isPointerLocked = document.pointerLockElement !== null;
+      const hint = $('pointerLockHint');
+      if (hint) {
+        hint.classList.toggle('visible', isPointerLocked);
+        if (isPointerLocked) {
+          hint.textContent = 'Press ESC to release mouse';
+        }
+      }
+    });
+
     // Game Player Functions
     function openGamePlayer(gameName, gameUrl) {
       currentGameUrl = `${serverUrl1}/${gameUrl}/`;
@@ -2787,10 +3477,16 @@ loadAndRun();<\/script></body></html>`
       if (gamePlayerTitle) gamePlayerTitle.textContent = gameName;
       if (gamePlayerLoading) gamePlayerLoading.classList.remove('hidden');
       if (gamePlayerIframe) {
+        // Add pointer-lock permission for cross-origin iframes
+        gamePlayerIframe.setAttribute('allow', 'pointer-lock; fullscreen; gamepad; cross-origin-isolated');
         gamePlayerIframe.src = currentGameUrl;
         gamePlayerIframe.onload = function() {
           if (gamePlayerLoading) gamePlayerLoading.classList.add('hidden');
         };
+        // Try to lock pointer on click
+        gamePlayerIframe.addEventListener('click', function() {
+          requestPointerLock(this);
+        });
       }
       if (gamePlayerView) gamePlayerView.classList.add('active');
       if (secondGamesContainer) secondGamesContainer.style.display = 'none';
@@ -3040,7 +3736,7 @@ loadAndRun();<\/script></body></html>`
       });
     }
 
-    // ==================== 2ND GAMES GRID ====================
+    // 2nd games grid
     let gamesRendered = false;
 
     function renderGamesGrid(filter = '') {
@@ -3062,7 +3758,13 @@ loadAndRun();<\/script></body></html>`
         img.loading = 'lazy';
         img.src = `${serverUrl1}/${game.url}/${game.image}`;
         img.alt = game.name;
-        img.onerror = function() { this.src = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23333%22 width=%22200%22 height=%22200%22/><text fill=%22%23666%22 x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22>No Image</text></svg>'; };
+        img.onerror = function() { 
+          // Create a colorful placeholder with game initials
+          const colors = ['#8b5cf6', '#06b6d4', '#22c55e', '#f472b6', '#ff5722', '#ec407a'];
+          const color = colors[game.name.length % colors.length];
+          const initials = game.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+          this.src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect fill="${encodeURIComponent(color)}" width="200" height="200"/><text fill="white" x="50%" y="55%" text-anchor="middle" font-family="Inter,sans-serif" font-size="48" font-weight="700">${initials}</text></svg>`;
+        };
         
         const p = document.createElement('p');
         p.textContent = game.name;
@@ -3083,7 +3785,7 @@ loadAndRun();<\/script></body></html>`
       gamesSearchInput.addEventListener('input', (e) => renderGamesGrid(e.target.value));
     }
 
-    // ==================== MODAL MANAGEMENT ====================
+    // modals
     function openModal(modalId) {
       const modal = $(modalId);
       if (modal) modal.classList.add('active');
@@ -3124,7 +3826,7 @@ loadAndRun();<\/script></body></html>`
       });
     });
 
-    // ==================== KEYBOARD SHORTCUTS ====================
+    // keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       if (e.key === 'Escape') {
@@ -3140,12 +3842,14 @@ loadAndRun();<\/script></body></html>`
       }
       const key = e.key.toLowerCase();
       switch (key) {
-        case 'g': showPage('games'); showGamesView('menu'); break;
+        case 'a': showPage('games'); showGamesView('menu'); break;
         case 'm': showPage('movies'); break;
         case 'p': showPage('partners'); break;
         case 'h': showPage('home'); showGamesView('menu'); break;
       }
     });
   </script>
+  <!-- DMCA Badge Script -->
+  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
 </body>
 </html>
