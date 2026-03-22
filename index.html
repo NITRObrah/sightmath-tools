@@ -130,22 +130,48 @@
       outline-offset: 2px;
     }
 
-    /* Button hover - just outline, no glow */
+    /* Button hover - outline + grow effect */
     .nav-link:hover,
     .nav-link.active,
     .footer-link:hover,
     .fullpage-btn:hover,
     .game-card:hover,
     .games-option:hover,
-    .cloak-btn:hover {
-      outline: 3px solid var(--accent);
+    .cloak-btn:hover,
+    .bypass-btn:hover,
+    .partner-card:hover,
+    .theme-btn:hover,
+    .info-box-link:hover,
+    .toggle-switch:hover,
+    .legal-tab:hover,
+    button:hover {
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
+      transform: scale(1.02);
+      transition: transform 0.2s ease, outline 0.2s ease;
     }
 
     .nav-link:hover,
     .nav-link.active {
       background: var(--accent-dim);
       color: var(--fg);
+    }
+
+    /* Specific grow intensities */
+    .game-card:hover {
+      transform: scale(1.03) translateY(-2px);
+    }
+
+    .games-option:hover {
+      transform: scale(1.02) translateY(-3px);
+    }
+
+    .partner-card:hover {
+      transform: scale(1.02) translateY(-4px);
+    }
+
+    .bypass-btn.panic:hover {
+      outline-color: var(--danger);
     }
 
     /* Loading Screen */
@@ -298,11 +324,17 @@
       top: 0;
       bottom: 0;
       z-index: 100;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     }
 
     .sidebar.collapsed {
       transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+      opacity: 1;
     }
 
     .sidebar-close-btn,
@@ -319,6 +351,12 @@
       justify-content: center;
       font-size: 14px;
       font-family: inherit;
+      transition: transform 0.2s ease, outline 0.2s ease;
+    }
+
+    .sidebar-close-btn:hover,
+    .sidebar-open-btn:hover {
+      transform: scale(1.1);
     }
 
     .sidebar-close-btn {
@@ -401,6 +439,7 @@
       width: 100%;
       text-align: left;
       font-family: inherit;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .nav-link i {
@@ -430,6 +469,7 @@
       width: 100%;
       text-align: left;
       font-family: inherit;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .footer-link i {
@@ -470,53 +510,6 @@
       font-size: 16px;
       color: var(--muted);
       font-weight: 500;
-    }
-
-    .search-wrapper {
-      width: 100%;
-      max-width: 560px;
-      margin-bottom: 40px;
-    }
-
-    .search-box {
-      display: flex;
-      background: var(--glass);
-      backdrop-filter: var(--blur-amount);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 6px;
-    }
-
-    .search-box:focus-within {
-      border-color: var(--accent);
-    }
-
-    .search-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      padding: 14px 20px;
-      font-size: 15px;
-      color: var(--fg);
-      font-family: inherit;
-      font-weight: 500;
-    }
-
-    .search-input::placeholder {
-      color: var(--muted);
-    }
-
-    .search-btn {
-      background: var(--accent);
-      border: none;
-      border-radius: 14px;
-      padding: 12px 24px;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
     }
 
     /* Info Boxes */
@@ -578,6 +571,7 @@
       text-decoration: none;
       cursor: pointer;
       font-family: inherit;
+      transition: transform 0.2s ease;
     }
 
     /* Full Page View */
@@ -635,6 +629,7 @@
       font-size: 13px;
       font-weight: 600;
       font-family: inherit;
+      transition: transform 0.2s ease;
     }
 
     .fullpage-btn.home-btn {
@@ -702,6 +697,11 @@
       text-align: center;
       position: relative;
       z-index: 1;
+      transition: transform 0.3s ease, border-color 0.2s ease;
+    }
+
+    .games-option:hover {
+      border-color: var(--accent);
     }
 
     .games-option i {
@@ -772,6 +772,7 @@
       font-size: 15px;
       text-align: center;
       font-family: inherit;
+      transition: border-color 0.2s ease;
     }
 
     .second-games-search:focus {
@@ -794,6 +795,11 @@
       border-radius: 12px;
       border: 1px solid var(--glass-border);
       cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.2s ease;
+    }
+
+    .game-card:hover {
+      border-color: var(--accent);
     }
 
     .game-card img {
@@ -971,6 +977,11 @@
       margin-bottom: 24px;
       border: none;
       font-family: inherit;
+      transition: transform 0.2s ease;
+    }
+
+    .partners-back:hover {
+      transform: scale(1.02);
     }
 
     .partners-header {
@@ -1001,6 +1012,11 @@
       text-align: center;
       text-decoration: none;
       color: var(--fg);
+      transition: transform 0.3s ease, border-color 0.2s ease;
+    }
+
+    .partner-card:hover {
+      border-color: var(--accent);
     }
 
     .partner-logo-wrap {
@@ -1064,6 +1080,11 @@
       margin-bottom: 24px;
       border: none;
       font-family: inherit;
+      transition: transform 0.2s ease;
+    }
+
+    .settings-back:hover {
+      transform: scale(1.02);
     }
 
     .settings-header {
@@ -1114,6 +1135,8 @@
       font-size: 10px;
       font-weight: 600;
       color: var(--fg);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      position: relative;
     }
 
     .theme-btn.active {
@@ -1165,10 +1188,15 @@
       position: relative;
       flex-shrink: 0;
       border: none;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .toggle-switch.on {
       background: var(--accent);
+    }
+
+    .toggle-switch.on:hover {
+      transform: scale(1.05);
     }
 
     .toggle-switch::after {
@@ -1208,12 +1236,17 @@
       font-family: inherit;
       font-size: 11px;
       font-weight: 600;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
     .cloak-btn.active {
       border-color: var(--accent);
       background: var(--accent-dim);
       color: var(--accent);
+    }
+
+    .cloak-btn.active:hover {
+      transform: scale(1.05);
     }
 
     .cloak-btn img {
@@ -1248,6 +1281,7 @@
       font-size: 13px;
       font-weight: 600;
       text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .bypass-btn i {
@@ -1262,6 +1296,10 @@
 
     .bypass-btn.panic i {
       color: var(--danger);
+    }
+
+    .bypass-btn.panic:hover {
+      transform: scale(1.03);
     }
 
     /* Modal */
@@ -1335,11 +1373,13 @@
       justify-content: center;
       font-family: inherit;
       font-size: 14px;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .modal-close:hover {
       background: var(--danger);
       color: #fff;
+      transform: scale(1.1);
     }
 
     .modal-body {
@@ -1376,6 +1416,11 @@
       font-weight: 600;
       cursor: pointer;
       font-family: inherit;
+      transition: transform 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      transform: scale(1.02);
     }
 
     /* Legal */
@@ -1399,11 +1444,16 @@
       border-radius: 8px;
       cursor: pointer;
       font-family: inherit;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .legal-tab.active {
       background: var(--accent);
       color: #fff;
+    }
+
+    .legal-tab.active:hover {
+      transform: scale(1.02);
     }
 
     .legal-content {
@@ -1498,9 +1548,6 @@
       .main-title {
         font-size: 48px;
       }
-      .search-wrapper {
-        max-width: 100%;
-      }
       .main {
         padding: 20px;
       }
@@ -1578,15 +1625,8 @@
       <main class="main" id="homePage">
         <header class="main-header">
           <h1 class="main-title">sight.w</h1>
-          <p class="main-subtitle">search stuff</p>
+          <p class="main-subtitle">ur spot for stuff</p>
         </header>
-
-        <div class="search-wrapper">
-          <form class="search-box" id="searchForm">
-            <input class="search-input" id="searchInput" type="text" placeholder="search..." autocomplete="off">
-            <button class="search-btn" type="submit">go</button>
-          </form>
-        </div>
 
         <div class="info-box">
           <div class="info-box-header">
@@ -2420,12 +2460,6 @@
 
       $('sidebarCloseBtn').onclick = () => { $('sidebar').classList.add('collapsed'); $('sidebarOpenBtn').classList.add('visible'); $('mainWrapper').classList.add('expanded'); };
       $('sidebarOpenBtn').onclick = () => { $('sidebar').classList.remove('collapsed'); $('sidebarOpenBtn').classList.remove('visible'); $('mainWrapper').classList.remove('expanded'); };
-
-      $('searchForm').onsubmit = (e) => {
-        e.preventDefault();
-        const q = $('searchInput').value.trim();
-        if (q) window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, '_blank');
-      };
 
       if (window.innerWidth <= 768) { $('sidebar').classList.add('collapsed'); $('sidebarOpenBtn').classList.add('visible'); $('mainWrapper').classList.add('expanded'); }
     }
