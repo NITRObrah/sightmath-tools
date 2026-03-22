@@ -1,5 +1,5 @@
 /* ========================================
-   CSS Variables & Themes & shii
+   CSS Variables & Themes and more shii
 ======================================== */
 :root {
   --bg: #0a0a0f;
@@ -97,7 +97,7 @@
 }
 
 /* ========================================
-   Base Styles i need itfuck.
+   Base Styles
 ======================================== */
 *, *::before, *::after {
   margin: 0;
@@ -123,48 +123,421 @@ body {
 }
 
 /* ========================================
-   Button Hover its ass though😡
+   Button Base Animations
 ======================================== */
-.nav-link:hover,
-.nav-link.active,
-.footer-link:hover,
-.fullpage-btn:hover,
-.game-card:hover,
-.games-option:hover,
-.cloak-btn:hover,
-.bypass-btn:hover,
-.partner-card:hover,
-.theme-btn:hover,
-.info-box-link:hover,
-.toggle-switch:hover,
-.legal-tab:hover,
-button:hover {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  transform: scale(1.02);
-  transition: transform 0.2s ease, outline 0.2s ease;
+.nav-link,
+.footer-link,
+.fullpage-btn,
+.game-card,
+.games-option,
+.cloak-btn,
+.bypass-btn,
+.partner-card,
+.theme-btn,
+.info-box-link,
+.toggle-switch,
+.legal-tab,
+.modal-close,
+.copy-btn,
+.settings-back,
+.partners-back,
+.sidebar-close-btn,
+.sidebar-open-btn,
+button {
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+/* Nav Links */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+  border-radius: 0 2px 2px 0;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  transform: scaleY(1);
 }
 
 .nav-link:hover,
 .nav-link.active {
   background: var(--accent-dim);
   color: var(--fg);
+  transform: translateX(4px);
+}
+
+/* Footer Links */
+.footer-link:hover {
+  background: var(--accent-dim);
+  transform: translateX(4px);
+}
+
+/* Game Cards */
+.game-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(139, 92, 246, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .game-card:hover {
-  transform: scale(1.03) translateY(-2px);
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.3);
+}
+
+.game-card:hover::after {
+  opacity: 1;
+}
+
+.game-card:hover img {
+  transform: scale(1.05);
+}
+
+.game-card img {
+  transition: transform 0.3s ease;
+}
+
+/* Games Option */
+.games-option {
+  position: relative;
+  overflow: hidden;
+}
+
+.games-option::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .games-option:hover {
-  transform: scale(1.02) translateY(-3px);
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 25px 50px -20px rgba(139, 92, 246, 0.4);
+}
+
+.games-option:hover::before {
+  opacity: 1;
+}
+
+.games-option:hover i {
+  transform: scale(1.15);
+}
+
+.games-option i {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Partner Cards */
+.partner-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transition: left 0.5s ease;
 }
 
 .partner-card:hover {
-  transform: scale(1.02) translateY(-4px);
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 30px 60px -25px rgba(139, 92, 246, 0.35);
+}
+
+.partner-card:hover::before {
+  left: 100%;
+}
+
+.partner-card:hover .partner-logo-wrap {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.partner-logo-wrap {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Theme Buttons */
+.theme-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.2);
+  transform: scale(0);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.theme-btn:hover {
+  transform: scale(1.08);
+  border-color: var(--accent);
+}
+
+.theme-btn:hover::before {
+  transform: scale(2);
+  opacity: 0;
+}
+
+.theme-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+}
+
+.toggle-switch:hover {
+  transform: scale(1.05);
+}
+
+.toggle-switch.on {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.toggle-switch.on::after {
+  transform: translateX(18px);
+}
+
+/* Cloak Buttons */
+.cloak-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.cloak-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+/* Bypass Buttons */
+.bypass-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.bypass-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.bypass-btn:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.bypass-btn:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .bypass-btn.panic:hover {
-  outline-color: var(--danger);
+  border-color: var(--danger);
+}
+
+.bypass-btn.panic:hover::after {
+  background: var(--danger);
+}
+
+/* Info Box Link */
+.info-box-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.info-box-link:hover {
+  transform: translateX(5px);
+}
+
+.info-box-link:hover::before {
+  transform: scaleX(1);
+}
+
+/* Modal Close Button */
+.modal-close:hover {
+  background: var(--danger);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* Copy Button */
+.copy-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.copy-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.copy-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.copy-btn:active {
+  transform: scale(0.97);
+}
+
+/* Legal Tabs */
+.legal-tab {
+  position: relative;
+}
+
+.legal-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.legal-tab:hover {
+  color: var(--fg);
+}
+
+.legal-tab:hover::after {
+  width: 80%;
+}
+
+.legal-tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.legal-tab.active::after {
+  width: 0;
+}
+
+/* Sidebar Buttons */
+.sidebar-close-btn:hover,
+.sidebar-open-btn:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: rotate(180deg);
+}
+
+/* Back Buttons */
+.settings-back:hover,
+.partners-back:hover {
+  transform: translateX(-5px);
+  background: var(--accent-dim);
+}
+
+/* Fullpage Buttons */
+.fullpage-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.fullpage-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.fullpage-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.fullpage-btn:hover::before {
+  opacity: 1;
+}
+
+.fullpage-btn.home-btn:hover {
+  box-shadow: 0 10px 25px -10px var(--accent);
+}
+
+.fullpage-btn.accent-btn:hover {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
 /* ========================================
@@ -193,6 +566,12 @@ button:hover {
   height: 80px;
   border-radius: 24px;
   margin-bottom: 24px;
+  animation: logoFloat 2s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .loading-title {
@@ -200,6 +579,12 @@ button:hover {
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 16px;
+  animation: titlePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 .loading-bar-container {
@@ -212,14 +597,20 @@ button:hover {
 
 .loading-bar {
   height: 100%;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent), #a78bfa, var(--accent));
+  background-size: 200% 100%;
   width: 0;
-  animation: load 0.8s ease-out forwards;
+  animation: load 0.8s ease-out forwards, shimmer 1s ease-in-out infinite;
 }
 
 @keyframes load {
   0% { width: 0; }
   100% { width: 100%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .loading-text {
@@ -236,7 +627,7 @@ button:hover {
 }
 
 /* ========================================
-   Panic Overlay (fixeid) wwww
+   Panic Overlay
 ======================================== */
 .panic-overlay {
   position: fixed;
@@ -251,12 +642,24 @@ button:hover {
 
 .panic-overlay.active {
   display: flex;
+  animation: panicFade 0.3s ease;
+}
+
+@keyframes panicFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .panic-overlay i {
   font-size: 64px;
   color: var(--danger);
   margin-bottom: 20px;
+  animation: panicPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes panicPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 .panic-overlay span {
@@ -265,7 +668,7 @@ button:hover {
 }
 
 /* ========================================
-   Stats Overlay dont work but imma keep it to troll
+   Stats Overlay
 ======================================== */
 .stats-overlay {
   position: fixed;
@@ -281,6 +684,12 @@ button:hover {
   display: none;
   flex-direction: column;
   gap: 8px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 .stats-overlay.visible {
@@ -301,7 +710,7 @@ button:hover {
 .stat-value.bad { color: var(--danger); }
 
 /* ========================================
-   App & Sidebar w app
+   App & Sidebar
 ======================================== */
 .app {
   display: flex;
@@ -345,18 +754,11 @@ button:hover {
   border: 2px solid var(--glass-border);
   border-radius: 10px;
   color: var(--muted);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   font-family: inherit;
-  transition: transform 0.2s ease, outline 0.2s ease;
-}
-
-.sidebar-close-btn:hover,
-.sidebar-open-btn:hover {
-  transform: scale(1.1);
 }
 
 .sidebar-close-btn {
@@ -376,6 +778,12 @@ button:hover {
 
 .sidebar-open-btn.visible {
   display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .logo {
@@ -390,6 +798,11 @@ button:hover {
   width: 44px;
   height: 44px;
   border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  transform: rotate(-5deg) scale(1.05);
 }
 
 .logo-text {
@@ -432,14 +845,12 @@ button:hover {
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
   text-decoration: none;
   border: none;
   background: transparent;
   width: 100%;
   text-align: left;
   font-family: inherit;
-  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-link i {
@@ -463,13 +874,11 @@ button:hover {
   color: var(--muted);
   font-size: 13px;
   font-weight: 500;
-  cursor: pointer;
   border: none;
   background: transparent;
   width: 100%;
   text-align: left;
   font-family: inherit;
-  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .footer-link i {
@@ -506,6 +915,12 @@ button:hover {
 .main-header {
   text-align: center;
   margin-bottom: 48px;
+  animation: headerFade 0.6s ease;
+}
+
+@keyframes headerFade {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .main-subtitle {
@@ -526,6 +941,15 @@ button:hover {
   border-radius: 20px;
   padding: 24px;
   margin-bottom: 20px;
+  animation: boxSlide 0.5s ease backwards;
+}
+
+.info-box:nth-child(1) { animation-delay: 0.1s; }
+.info-box:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes boxSlide {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 .info-box-header {
@@ -573,9 +997,7 @@ button:hover {
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
-  cursor: pointer;
   font-family: inherit;
-  transition: transform 0.2s ease;
 }
 
 /* ========================================
@@ -592,6 +1014,12 @@ button:hover {
 
 .fullpage-view.active {
   display: flex;
+  animation: pageSlide 0.3s ease;
+}
+
+@keyframes pageSlide {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .fullpage-header {
@@ -628,14 +1056,12 @@ button:hover {
   gap: 8px;
   padding: 10px 16px;
   border-radius: 10px;
-  border: none;
+  border: 2px solid transparent;
   background: var(--card);
   color: var(--muted);
-  cursor: pointer;
   font-size: 13px;
   font-weight: 600;
   font-family: inherit;
-  transition: transform 0.2s ease;
 }
 
 .fullpage-btn.home-btn {
@@ -691,6 +1117,12 @@ button:hover {
   background-repeat: repeat;
   background-size: 400px 300px;
   z-index: 0;
+  animation: starsMove 60s linear infinite;
+}
+
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to { background-position: 400px 300px; }
 }
 
 .games-option {
@@ -701,15 +1133,9 @@ button:hover {
   backdrop-filter: var(--blur-amount);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  cursor: pointer;
   text-align: center;
   position: relative;
   z-index: 1;
-  transition: transform 0.3s ease, border-color 0.2s ease;
-}
-
-.games-option:hover {
-  border-color: var(--accent);
 }
 
 .games-option i {
@@ -730,7 +1156,7 @@ button:hover {
 }
 
 .recommended-badge {
-  display: block;
+  display: inline-block;
   margin-top: 8px;
   padding: 4px 12px;
   background: var(--accent);
@@ -738,6 +1164,12 @@ button:hover {
   border-radius: 6px;
   font-size: 11px;
   font-weight: 700;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
 }
 
 .games-row {
@@ -793,12 +1225,13 @@ button:hover {
   font-size: 15px;
   text-align: center;
   font-family: inherit;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .second-games-search:focus {
   border-color: var(--accent);
   outline: none;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
 }
 
 .second-games-grid {
@@ -815,12 +1248,6 @@ button:hover {
   background: var(--glass);
   border-radius: 12px;
   border: 1px solid var(--glass-border);
-  cursor: pointer;
-  transition: transform 0.3s ease, border-color 0.2s ease;
-}
-
-.game-card:hover {
-  border-color: var(--accent);
 }
 
 .game-card img {
@@ -854,6 +1281,7 @@ button:hover {
 
 .game-player-view.active {
   display: flex;
+  animation: pageSlide 0.3s ease;
 }
 
 .game-player-header {
@@ -945,6 +1373,7 @@ button:hover {
   pointer-events: none;
   opacity: 0;
   z-index: 100;
+  transition: opacity 0.3s ease;
 }
 
 .pointer-lock-hint.visible {
@@ -982,6 +1411,7 @@ button:hover {
 
 .partners-page.active {
   display: block;
+  animation: pageSlide 0.3s ease;
 }
 
 .partners-content {
@@ -990,7 +1420,8 @@ button:hover {
   padding: 40px 24px;
 }
 
-.partners-back {
+.partners-back,
+.settings-back {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1000,15 +1431,9 @@ button:hover {
   color: var(--fg);
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 24px;
   border: none;
   font-family: inherit;
-  transition: transform 0.2s ease;
-}
-
-.partners-back:hover {
-  transform: scale(1.02);
+  margin-bottom: 24px;
 }
 
 .partners-header {
@@ -1035,15 +1460,9 @@ button:hover {
   border-radius: 24px;
   padding: 28px;
   border: 1px solid var(--glass-border);
-  cursor: pointer;
   text-align: center;
   text-decoration: none;
   color: var(--fg);
-  transition: transform 0.3s ease, border-color 0.2s ease;
-}
-
-.partner-card:hover {
-  border-color: var(--accent);
 }
 
 .partner-logo-wrap {
@@ -1087,33 +1506,13 @@ button:hover {
 
 .settings-page.active {
   display: block;
+  animation: pageSlide 0.3s ease;
 }
 
 .settings-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 24px;
-}
-
-.settings-back {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background: var(--card);
-  border-radius: 12px;
-  color: var(--fg);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 24px;
-  border: none;
-  font-family: inherit;
-  transition: transform 0.2s ease;
-}
-
-.settings-back:hover {
-  transform: scale(1.02);
 }
 
 .settings-header {
@@ -1128,7 +1527,13 @@ button:hover {
 
 .settings-section {
   margin-bottom: 32px;
+  animation: boxSlide 0.4s ease backwards;
 }
+
+.settings-section:nth-child(1) { animation-delay: 0.1s; }
+.settings-section:nth-child(2) { animation-delay: 0.15s; }
+.settings-section:nth-child(3) { animation-delay: 0.2s; }
+.settings-section:nth-child(4) { animation-delay: 0.25s; }
 
 .settings-section-title {
   font-size: 14px;
@@ -1157,7 +1562,6 @@ button:hover {
   aspect-ratio: 1;
   border-radius: 12px;
   border: 2px solid var(--glass-border);
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1165,12 +1569,7 @@ button:hover {
   font-size: 10px;
   font-weight: 600;
   color: var(--fg);
-  transition: transform 0.2s ease, border-color 0.2s ease;
   position: relative;
-}
-
-.theme-btn.active {
-  border-color: var(--accent);
 }
 
 .theme-btn.active::after {
@@ -1215,35 +1614,9 @@ button:hover {
   height: 26px;
   background: var(--card);
   border-radius: 13px;
-  cursor: pointer;
   position: relative;
   flex-shrink: 0;
   border: none;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.toggle-switch.on {
-  background: var(--accent);
-}
-
-.toggle-switch.on:hover {
-  transform: scale(1.05);
-}
-
-.toggle-switch::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border-radius: 50%;
-  transition: transform 0.2s ease;
-}
-
-.toggle-switch.on::after {
-  transform: translateX(18px);
 }
 
 /* Cloak Grid */
@@ -1259,7 +1632,6 @@ button:hover {
   border: 2px solid var(--glass-border);
   background: var(--card);
   color: var(--muted);
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1267,17 +1639,12 @@ button:hover {
   font-family: inherit;
   font-size: 11px;
   font-weight: 600;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .cloak-btn.active {
   border-color: var(--accent);
   background: var(--accent-dim);
   color: var(--accent);
-}
-
-.cloak-btn.active:hover {
-  transform: scale(1.05);
 }
 
 .cloak-btn img {
@@ -1303,7 +1670,6 @@ button:hover {
   border: 2px solid var(--glass-border);
   background: var(--card);
   color: var(--fg);
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1312,7 +1678,6 @@ button:hover {
   font-size: 13px;
   font-weight: 600;
   text-align: center;
-  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .bypass-btn i {
@@ -1327,10 +1692,6 @@ button:hover {
 
 .bypass-btn.panic i {
   color: var(--danger);
-}
-
-.bypass-btn.panic:hover {
-  transform: scale(1.03);
 }
 
 /* ========================================
@@ -1361,8 +1722,8 @@ button:hover {
   border: 1px solid var(--glass-border);
   border-radius: 24px;
   overflow: hidden;
-  transform: scale(0.95);
-  transition: transform 0.25s ease;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   max-height: 90vh;
   overflow-y: auto;
   width: 90%;
@@ -1370,7 +1731,7 @@ button:hover {
 }
 
 .modal-overlay.active .modal {
-  transform: scale(1);
+  transform: scale(1) translateY(0);
 }
 
 .modal-header {
@@ -1400,19 +1761,11 @@ button:hover {
   border: none;
   background: var(--card);
   color: var(--muted);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: inherit;
   font-size: 14px;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.modal-close:hover {
-  background: var(--danger);
-  color: #fff;
-  transform: scale(1.1);
 }
 
 .modal-body {
@@ -1447,13 +1800,7 @@ button:hover {
   color: #fff;
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
   font-family: inherit;
-  transition: transform 0.2s ease;
-}
-
-.copy-btn:hover {
-  transform: scale(1.02);
 }
 
 /* ========================================
@@ -1477,18 +1824,7 @@ button:hover {
   font-size: 13px;
   font-weight: 600;
   border-radius: 8px;
-  cursor: pointer;
   font-family: inherit;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.legal-tab.active {
-  background: var(--accent);
-  color: #fff;
-}
-
-.legal-tab.active:hover {
-  transform: scale(1.02);
 }
 
 .legal-content {
